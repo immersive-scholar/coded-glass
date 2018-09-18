@@ -1,0 +1,741 @@
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*|||||||||||||||||||| General large-scale displays ||||||||||||||||||||*/
+/*||||||||||| (min-height: 2100px, width: 10000px - 1000px) |||||||||||*/
+/*||||||||| (Meant for non-interactive, non-scrollable walls) |||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/**********************************************************************/
+/**********************************************************************/
+/******************* Wider landscape (100/21 - 18/7) *******************/
+/**********************************************************************/
+/**********************************************************************/
+/* Aspect ratios between 100/21 and 30/7 */
+:root {
+  /* body and .main-container properties */
+  --body-overflow: hidden;
+  --background-color: #000000;
+  --text-color: #FFFFFF;
+  --link-color: #CC0000;
+  --outermost-padding: 100px;
+  --main-container-display: grid;
+  --main-container-grid-areas:
+    "matrix main-txt"
+    "matrix link";
+  --heading-font-family: 'Titillium Web', sans-serif;
+  --paragraph-font-family: 'Roboto', sans-serif;
+  --heading-line-height: 1.1;
+  --paragraph-line-height: 1.3;
+  --center-position: center;
+  --horizontal-center-margins: 0;
+  --left-col-width: 80vw;
+  --right-col-width: 20vw;
+  --top-row-height: 85.714vh;
+  --middle-row-height: 0vh;
+  --bottom-row-height: 14.286vh;
+  --main-cont-row-heights: var(--top-row-height) var(--bottom-row-height);
+  /* .main-txt properties */
+  --main-txt-display: block;
+  --main-txt-grid-areas: "";
+  --main-txt-heading-margin: 75px 0;
+  --main-txt-bg-color: rgb(0, 0, 0, 0);
+  --max-main-line-length: 1090px;
+  --main-title-size: 168px;
+  --main-researcher-name-size: 108px;
+  --main-desc-size: 60px;
+  --main-link-size: 48px;
+  --main-txt-padding: 0 75px 0 75px;
+  --main-desc-padding-left: 0px;
+  --main-desc-margin: initial;
+  --quote-padding: 25px 0 25px 0;
+  /* .matrix properties */
+  --matrix-item-side-length: 70%;
+  --matrix-item-max-side-length: 700px;
+  --matrix-item-gap: 0px;
+  --matrix-item-height: 50vh;
+  --matrix-item-width: calc(.25 * var(--left-col-width));
+  --matrix-col-spacing: 1fr 1fr 1fr 1fr;
+  --matrix-row-spacing: 1fr 1fr;
+  --matrix-width: 75%;
+  --max-matrix-width: 6000px;
+  --matrix-overflow: hidden;
+  /* .imm-sch-url-container properties */
+  --imm-sch-url-container-display: grid;
+  --imm-sch-cont-height: initial;
+  --imm-sch-cont-padding: 0px 75px 0 75px;
+  --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
+  --imm-sch-url-vertical-align: center;
+  --imm-sch-url-vertical-align-percentage: 62.5%;
+  --imm-sch-url-padding: 0 0 0 0;
+  --imm-sch-url-margin: 67.5px 0 0 0;
+  --imm-sch-url-size: 24px;
+  --imm-sch-url-container-areas: "logo imm-sch-url";
+  --imm-sch-url-column-width: 75%;
+  --logo-column-width: 25%;
+  --imm-sch-url-display: block;
+  --logo-display: block;
+  --max-logo-height: 110px;
+  --logo-padding: 0 0 0 0; }
+
+/* Element containing .main-container */
+body {
+  margin: 0;
+  overflow: var(--body-overflow);
+  background-color: var(--background-color);
+  color: var(--text-color); }
+
+/*
+ * Class containing the matrix, main-txt, and main-url classes,
+ * all organized in a grid layout
+ */
+.main-container {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 100vh;
+  width: 100vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: var(--main-container-display);
+  grid-template-areas: var(--main-container-grid-areas);
+  grid-template-columns: var(--left-col-width) var(--right-col-width);
+  grid-template-rows: var(--main-cont-row-heights);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+/* Main (collection) title, researcher name, and project titles */
+h1, h2, h3 {
+  font-family: var(--heading-font-family);
+  line-height: var(--heading-line-height); }
+
+/* All body text */
+p {
+  font-family: var(--paragraph-font-family);
+  line-height: var(--paragraph-line-height); }
+
+/* All links */
+a {
+  text-decoration: none;
+  color: var(--link-color); }
+
+/* Keeps visited links the same color as unvisted links */
+a:visited {
+  color: var(--link-color); }
+
+/**********************************************************************/
+/******************** Main text area ********************/
+/**********************************************************************/
+/*
+ * Container for main (collection) title, researcher name,
+ * description, and Immersive Scholar logo
+ */
+.main-txt {
+  padding: var(--main-txt-padding);
+  margin: var(--horizontal-center-margins);
+  grid-area: main-txt;
+  background-color: var(--main-txt-bg-color);
+  z-index: 1;
+  display: var(--main-txt-display);
+  grid-template-areas: var(--main-txt-grid-areas); }
+
+/* Title of the researcher's collection of work */
+.main-title {
+  font-size: var(--main-title-size);
+  margin: var(--main-txt-heading-margin);
+  font-weight: 700;
+  grid-area: title; }
+
+/* Name of the researcher */
+.researcher-name {
+  font-size: var(--main-researcher-name-size);
+  margin: var(--main-txt-heading-margin);
+  grid-area: name; }
+
+/* Paragraph describing the collection of work */
+.main-desc {
+  font-size: var(--main-desc-size);
+  grid-area: desc;
+  padding-left: var(--main-desc-padding-left);
+  margin: var(--main-desc-margin); }
+
+/* Styling for "about" paragraph */
+.about {
+  margin: 0; }
+
+/* Styling for quotes */
+.quote {
+  padding: var(--quote-padding);
+  margin: 0;
+  font-style: italic; }
+
+/* Actual URL to the collection */
+.main-url {
+  font-size: var(--main-link-size);
+  grid-area: url; }
+
+/**********************************************************************/
+/******************** Matrix ********************/
+/**********************************************************************/
+/* Container for all the matrix items */
+.matrix {
+  width: var(--left-col-width);
+  display: grid;
+  grid-template-columns: var(--matrix-col-spacing);
+  grid-gap: var(--matrix-item-gap);
+  -webkit-box-align: var(--center-position);
+      -ms-flex-align: var(--center-position);
+          align-items: var(--center-position);
+  grid-area: matrix;
+  overflow: var(--matrix-overflow); }
+
+/* Individual cell in the matrix */
+.matrix-item {
+  width: var(--matrix-item-width);
+  height: var(--matrix-item-height);
+  justify-self: var(--center-position);
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+/**********************************************************************/
+/******************** Immersive Scholar URL ********************/
+/**********************************************************************/
+/* Container for the URL to the Immersion Scholar project website */
+.imm-sch-url-container {
+  grid-area: link;
+  -ms-flex-item-align: var(--imm-sch-url-vertical-align);
+      align-self: var(--imm-sch-url-vertical-align);
+  background-color: var(--imm-sch-url-bg-color);
+  z-index: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: var(--imm-sch-cont-height);
+  display: var(--imm-sch-url-container-display);
+  grid-template-areas: var(--imm-sch-url-container-areas);
+  grid-template-columns: var(--logo-column-width) var(--imm-sch-url-column-width);
+  padding: var(--imm-sch-cont-padding); }
+
+/* Immersive Scholar logo */
+#logo {
+  max-height: var(--max-logo-height);
+  display: var(--logo-display);
+  padding: var(--logo-padding);
+  grid-area: logo; }
+
+/* URL for the Immersive Scholar project that appears outside of .main-txt */
+.imm-sch-url {
+  margin: var(--imm-sch-url-margin);
+  font-size: var(--imm-sch-url-size);
+  display: var(--imm-sch-url-display);
+  vertical-align: var(--imm-sch-url-vertical-align-percentage);
+  grid-area: imm-sch-url;
+  padding: var(--imm-sch-url-padding); }
+
+/* TODO write calc() to change column sizes */
+/* Aspect ratios 30/7 to 27/7 */
+@media (max-aspect-ratio: 30 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 77.5vw;
+    --right-col-width: 22.5vw; } }
+
+/* Aspect ratios 27/7 to 64/21 */
+@media (max-aspect-ratio: 27 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 75vw;
+    --right-col-width: 25vw; } }
+
+/* Aspect ratios 64/21 to 18/7 */
+@media (max-aspect-ratio: 64 / 21) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 70vw;
+    --right-col-width: 30vw; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** Landscape (18/7 - 8/5) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/* Aspect ratios 18/7 to 2/1 */
+@media (max-aspect-ratio: 18 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 65vw;
+    --right-col-width: 35vw;
+    /* .main-txt properties */
+    --main-desc-size: 54px;
+    --imm-sch-url-column-width: 70%;
+    --logo-column-width: 30%; } }
+
+/* Aspect ratios 2/1 to 8/5 */
+@media (max-aspect-ratio: 2 / 1) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 60vw;
+    --right-col-width: 40vw; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** Narrower Landscape (8/5 - 1/1) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/* For a "square" or "nearly square" (landscape) layout */
+/* (Aspect ratios 8/5 to 1/1) */
+@media (max-aspect-ratio: 8 / 5) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-grid-areas:
+      "matrix matrix"
+      "main-txt main-txt"
+      "link link";
+    --left-col-width: 100vw;
+    --right-col-width: 0vw;
+    --top-row-height: 60vh;
+    --middle-row-height: 30vh;
+    --bottom-row-height: 10vh;
+    --main-cont-row-heights: var(--top-row-height) var(--middle-row-height) var(--bottom-row-height);
+    /* .main-txt properties */
+    --main-txt-display: grid;
+    --main-txt-grid-areas:
+      "title desc"
+      "name desc"
+      "url desc";
+    --main-txt-heading-margin: 0px 0px 25px 0px;
+    --main-title-size: 120px;
+    --main-researcher-name-size: 84px;
+    --main-desc-size: 42px;
+    --main-link-size: 30px;
+    --main-txt-padding: 75px;
+    --main-desc-padding-left: 75px;
+    --main-desc-margin: 0px;
+    /* .matrix properties */
+    --matrix-width: 100%;
+    --matrix-item-height: calc(var(--top-row-height) / 2);
+    --matrix-item-side-length: 85%;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-container-display: block;
+    --imm-sch-cont-height: 10vh;
+    --imm-sch-cont-padding-top: 2.5vh;
+    --imm-sch-url-vertical-align-percentage: 55%;
+    --imm-sch-url-size: 24px;
+    --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
+    --imm-sch-url-padding: 0 75px 75px 25px;
+    --imm-sch-url-display: inline;
+    --logo-display: inline;
+    --logo-padding: 0 0 0 0; }
+  .main-txt {
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 30% 25% auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .main-desc {
+    -webkit-column-count: 2;
+            column-count: 2; }
+  .quote {
+    padding: 0;
+    margin: 36px 0 0 0; } }
+
+/* For a wider "portrait" layout */
+/* (Aspect ratios between 9/7 to 1/1) */
+@media (max-aspect-ratio: 9 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --top-row-height: 55vh;
+    --middle-row-height: 35vh;
+    --bottom-row-height: 10vh; }
+  .main-txt {
+    grid-template-rows: auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .main-desc {
+    -webkit-column-fill: auto;
+            column-fill: auto; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** Portrait (1/1 to 10/21) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/* For a wider "portrait" layout */
+/* (Aspect ratios 1/1 to 5/7) */
+@media (max-aspect-ratio: 1 / 1) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --horizontal-center-margins: 0;
+    /* .main-txt properties */
+    --max-main-line-length: 800px;
+    --main-title-size: 108px;
+    --main-researcher-name-size: 72px;
+    --main-desc-size: 36px;
+    --main-link-size: 24px;
+    /* .matrix properties */
+    --main-txt-padding: 75px;
+    --matrix-col-spacing: 1fr 1fr 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr;
+    --matrix-width: 100%;
+    --max-matrix-width: 100%;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-vertical-align: center;
+    --imm-sch-url-vertical-align-percentage: 40%;
+    --imm-sch-url-margin: 0 0 0 0;
+    --imm-sch-url-padding: 0 75px 25px 0.5vw;
+    --imm-sch-url-display: inline-table;
+    --logo-display: inline-block;
+    --max-logo-height: 80px; } }
+
+/* For an even narrower "portrait" layout */
+/* (Aspect ratios between 11/21 and 5/7) */
+@media (max-aspect-ratio: 6 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --horizontal-center-margins: 0 auto;
+    --main-container-grid-areas:
+      "matrix"
+      "main-txt"
+      "link";
+    /* .main-txt properties */
+    --main-txt-grid-areas:
+      "title desc"
+      "name desc"
+      "url desc";
+    --main-txt-padding: 50px;
+    --main-txt-heading-margin: 0px 0px 15px 0px;
+    --main-title-size: 84px;
+    --main-researcher-name-size: 48px;
+    --main-desc-size: 30px;
+    --main-link-size: 12px;
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */
+    --imm-sch-cont-height: 5vh;
+    --imm-sch-cont-padding-top: 1.25vh;
+    --imm-sch-cont-padding: 0 0 0 0;
+    --imm-sch-url-vertical-align-percentage: 55%;
+    --imm-sch-url-padding: 0px;
+    --imm-sch-url-size: 12px;
+    --logo-padding: 0 0 0 50px;
+    --max-logo-height: 50px; }
+  .main-desc {
+    display: block; }
+  .main-txt {
+    grid-template-rows: 35% 15% auto; } }
+
+/* The narrowest "portrait" layouts */
+/* (Aspect ratios below 11/21) */
+@media (max-aspect-ratio: 11 / 21) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-grid-areas:
+      "matrix"
+      "main-txt"
+      "link";
+    --left-col-width: 100vw;
+    --right-col-width: 0vw;
+    --top-row-height: 55vh;
+    --middle-row-height: 40vh;
+    --bottom-row-height: 5vh;
+    /* .main-txt properties */
+    --main-txt-display: block;
+    --main-txt-grid-areas: "";
+    --main-txt-heading-margin: 0px 0px 25px 0px;
+    --main-desc-padding-left: 0px;
+    --quote-padding: 25px 0 25px 0;
+    /* .matrix properties */
+    --matrix-col-spacing: 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr 1fr 1fr;
+    --matrix-item-height: calc(.25 * var(--top-row-height));
+    --matrix-item-width: calc(.5 * var(--left-col-width));
+    /* .imm-sch-url-container properties */
+    --imm-sch-cont-padding: 0px 50px 0 50px;
+    --imm-sch-url-padding: 0 75px 75px 0px;
+    --imm-sch-url-size: 12px;
+    --imm-sch-url-display: block;
+    --max-logo-height: 50px;
+    --logo-padding: 0 0 0 0; }
+  .main-url {
+    float: right; } }
+
+/**********************************************************************/
+/******************** For height-based font-size changes ********************/
+/**********************************************************************/
+/* Make the font a bit smaller if vh is 2100-2200px */
+/*
+@media (max-height: 2200px) {
+  :root {
+    /* .main-txt properties */
+/*--main-desc-size: 54px;
+  }
+}
+*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||| Personal devices (with scrolling capabilities) |||||||||||*/
+/*|||||||||||||||||||||||| (min-height: 2100px) ||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* Personal displays wider than 2560px */
+/**********************************************************************/
+/**********************************************************************/
+/******************** For 4K display (large desktop?) ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 2560px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --body-overflow: auto;
+    --left-col-width: 75vw;
+    --right-col-width: 25vw;
+    --top-row-height: 80vh;
+    --bottom-row-height: 20vh;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 25px 0;
+    --main-txt-padding: 40px;
+    --main-txt-bg-color: rgb(54, 69, 79, 0);
+    --main-title-size: 60px;
+    --main-researcher-name-size: 30px;
+    --main-desc-size: 16px;
+    --main-link-size: 12px;
+    /* .matrix properties */
+    --matrix-overflow: auto;
+    --matrix-col-spacing: 1fr 1fr 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-vertical-align-percentage: 52.5%;
+    --imm-sch-cont-padding: 0px 40px 0 40px;
+    --imm-sch-url-margin: 0 0 0 0;
+    --imm-sch-url-column-width: 0%;
+    --logo-column-width: 100%;
+    --imm-sch-url-container-areas:
+      "logo"
+      "imm-sch-url";
+    --imm-sch-url-padding: 0vw;
+    --imm-sch-url-size: 10px;
+    --max-logo-height: 40px; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** For large laptop ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 1440px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 70vw;
+    --right-col-width: 30vw;
+    /* .main-txt properties */
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** For laptop ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 1024px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 60vw;
+    --right-col-width: 40vw;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 25px 0;
+    /* .matrix properties */
+    --matrix-item-height: 25vh;
+    --matrix-item-width: calc(.5 * var(--left-col-width));
+    --matrix-col-spacing: 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr 1fr 1fr;
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** For tablet ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 768px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --horizontal-center-margins: 0 auto;
+    --main-container-display: block;
+    /* .main-txt properties */
+    --main-txt-padding: 5vw;
+    --main-title-size: 60px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 24px;
+    --main-link-size: 18px;
+    /* .matrix properties */
+    --matrix-item-width: 100%;
+    --matrix-item-height: auto;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-size: 12px;
+    --imm-sch-cont-padding: 5vw; }
+  .matrix {
+    width: 100vw;
+    overflow: auto;
+    padding: 0 5vw;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** For larger mobile device ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 425px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 15px 0;
+    --main-title-size: 60px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 18px;
+    --main-link-size: 12px;
+    /* .matrix properties */
+    --matrix-col-spacing: 1fr;
+    --matrix-row-spacing: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** For medium mobile device ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 375px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    /* .main-txt properties */
+    --main-title-size: 54px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 16px;
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** For small mobile device ********************/
+/**********************************************************************/
+/**********************************************************************/
+@media (max-width: 320px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 10px 0;
+    --main-title-size: 48px;
+    --main-researcher-name-size: 30px;
+    --main-desc-size: 14px;
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||  Specific to Hunt Library walls (w/ bevel grids) ||||||||||*/
+/*|||||||||||  (Visualization Wall also has special layout) |||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* Aligns to 15x8 Art Wall grid */
+@media (width: 5760px) and (height: 2304px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 80vw;
+    --right-col-width: 20vw;
+    /* .main-txt properties */
+    --main-desc-size: 48px;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-margin: 0 0 0 0;
+    --imm-sch-url-column-width: 0%;
+    --logo-column-width: 100%;
+    --imm-sch-url-container-areas:
+      "logo"
+      "imm-sch-url"; } }
+
+/* Aligns to 9x10 Commons Wall grid */
+@media (width: 2880px) and (height: 2400px) {
+  :root {
+    /* body and .main-container properties */
+    --top-row-height: 60vh;
+    --middle-row-height: 30vh;
+    --bottom-row-height: 10vh;
+    /* .main-txt properties */
+    --main-txt-grid-areas:
+      "title desc"
+      "name desc"
+      "url desc";
+    --main-title-size: 132px;
+    --main-researcher-name-size: 96px;
+    --main-desc-size: 54px;
+    --main-link-size: 42px; }
+  .main-txt {
+    grid-template-columns: auto;
+    grid-template-rows: 30% 20% auto; }
+  .quote {
+    display: none; }
+  .main-desc {
+    -webkit-column-count: 1;
+            column-count: 1; } }
+
+/* Aligns to 16x7 iPearl Immersion Theater grid */
+@media (width: 6816px) and (height: 2240px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 75vw;
+    --right-col-width: 25vw;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-column-width: 75%;
+    --logo-column-width: 25%; } }
+
+/* Aligns to 9x10 Visualization Wall grid (including columns) */
+@media (width: 3840px) and (height: 1518px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-grid-areas:
+      "main-txt"
+      "link";
+    --left-col-width: 100vw;
+    --right-col-width: 0vw;
+    --main-container-display: block;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 25px 0;
+    --main-txt-padding: 300px 25px 0 25px;
+    --main-title-size: 60px;
+    --main-researcher-name-size: 48px;
+    --main-desc-size: 18px;
+    --main-link-size: 12px;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-container-display: block;
+    --imm-sch-cont-padding: 0px 25px 0 25px;
+    --imm-sch-url-size: 12px;
+    --imm-sch-url-padding: 0 0 0 0;
+    --imm-sch-url-margin: 0 0 0 0;
+    --max-logo-height: 40px; }
+  .main-txt {
+    width: 405px;
+    position: fixed;
+    left: 610px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: black;
+    height: 100vw; }
+  .imm-sch-url-container {
+    width: 405px;
+    position: fixed;
+    left: 610px;
+    bottom: 455px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: black; } }
