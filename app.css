@@ -48,7 +48,7 @@
   --max-main-line-length: 1090px;
   --main-title-size: 168px;
   --main-researcher-name-size: 108px;
-  --main-desc-size: 60px;
+  --main-desc-size: 58px;
   --main-link-size: 48px;
   --main-txt-padding: 0 75px 0 75px;
   --main-desc-padding-left: 0px;
@@ -67,19 +67,18 @@
   --matrix-overflow: hidden;
   /* .imm-sch-url-container properties */
   --imm-sch-url-container-display: grid;
+  --imm-sch-url-container-columns: 355px auto;
   --imm-sch-cont-height: initial;
   --imm-sch-cont-padding: 0px 75px 0 75px;
   --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
   --imm-sch-url-vertical-align: center;
   --imm-sch-url-vertical-align-percentage: 62.5%;
   --imm-sch-url-padding: 0 0 0 0;
-  --imm-sch-url-margin: 67.5px 0 0 0;
+  --imm-sch-url-margin: 70px 0 0 0;
   --imm-sch-url-size: 24px;
   --imm-sch-url-container-areas: "logo imm-sch-url";
   --imm-sch-url-column-width: 75%;
   --logo-column-width: 25%;
-  --imm-sch-url-display: block;
-  --logo-display: block;
   --max-logo-height: 110px;
   --logo-padding: 0 0 0 0; }
 
@@ -217,7 +216,7 @@ a:visited {
   height: var(--imm-sch-cont-height);
   display: var(--imm-sch-url-container-display);
   grid-template-areas: var(--imm-sch-url-container-areas);
-  grid-template-columns: var(--logo-column-width) var(--imm-sch-url-column-width);
+  grid-template-columns: var(--imm-sch-url-container-columns);
   padding: var(--imm-sch-cont-padding); }
 
 /* Immersive Scholar logo */
@@ -249,7 +248,9 @@ a:visited {
   :root {
     /* body and .main-container properties */
     --left-col-width: 75vw;
-    --right-col-width: 25vw; } }
+    --right-col-width: 25vw;
+    /* .main-txt properties */
+    --main-desc-size: 54px; } }
 
 /* Aspect ratios 64/21 to 18/7 */
 @media (max-aspect-ratio: 64 / 21) and (min-height: 2100px) {
@@ -269,8 +270,6 @@ a:visited {
     /* body and .main-container properties */
     --left-col-width: 65vw;
     --right-col-width: 35vw;
-    /* .main-txt properties */
-    --main-desc-size: 54px;
     --imm-sch-url-column-width: 70%;
     --logo-column-width: 30%; } }
 
@@ -279,15 +278,16 @@ a:visited {
   :root {
     /* body and .main-container properties */
     --left-col-width: 60vw;
-    --right-col-width: 40vw; } }
+    --right-col-width: 40vw;
+    /* .main-txt properties */
+    --main-desc-size: 50px; } }
 
 /**********************************************************************/
 /**********************************************************************/
 /******************** Narrower Landscape (8/5 - 1/1) ********************/
 /**********************************************************************/
 /**********************************************************************/
-/* For a "square" or "nearly square" (landscape) layout */
-/* (Aspect ratios 8/5 to 1/1) */
+/* Aspect ratios 8/5 to 10/7 */
 @media (max-aspect-ratio: 8 / 5) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
@@ -320,13 +320,13 @@ a:visited {
     --matrix-item-height: calc(var(--top-row-height) / 2);
     --matrix-item-side-length: 85%;
     /* .imm-sch-url-container properties */
-    --imm-sch-url-container-display: block;
+    --imm-sch-url-container-display: grid;
     --imm-sch-cont-height: 10vh;
     --imm-sch-cont-padding-top: 2.5vh;
     --imm-sch-url-vertical-align-percentage: 55%;
     --imm-sch-url-size: 24px;
     --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
-    --imm-sch-url-padding: 0 75px 75px 25px;
+    --imm-sch-url-padding: 0 0 75px 0;
     --imm-sch-url-display: inline;
     --logo-display: inline;
     --logo-padding: 0 0 0 0; }
@@ -342,14 +342,15 @@ a:visited {
     padding: 0;
     margin: 36px 0 0 0; } }
 
-/* For a wider "portrait" layout */
-/* (Aspect ratios between 9/7 to 1/1) */
-@media (max-aspect-ratio: 9 / 7) and (min-height: 2100px) {
+/* Aspect ratios between 10/7 to 1/1 */
+@media (max-aspect-ratio: 10 / 7) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
     --top-row-height: 55vh;
     --middle-row-height: 35vh;
-    --bottom-row-height: 10vh; }
+    --bottom-row-height: 10vh;
+    /* .main-txt properties */
+    --main-desc-size: 38px; }
   .main-txt {
     grid-template-rows: auto;
     -webkit-box-sizing: border-box;
@@ -364,7 +365,7 @@ a:visited {
 /**********************************************************************/
 /**********************************************************************/
 /* For a wider "portrait" layout */
-/* (Aspect ratios 1/1 to 5/7) */
+/* (Aspect ratios 1/1 to 6/7) */
 @media (max-aspect-ratio: 1 / 1) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
@@ -384,14 +385,13 @@ a:visited {
     /* .imm-sch-url-container properties */
     --imm-sch-url-vertical-align: center;
     --imm-sch-url-vertical-align-percentage: 40%;
-    --imm-sch-url-margin: 0 0 0 0;
-    --imm-sch-url-padding: 0 75px 25px 0.5vw;
-    --imm-sch-url-display: inline-table;
-    --logo-display: inline-block;
+    --imm-sch-url-container-columns: 265px auto;
+    --imm-sch-url-margin: 50px 0 0 0;
+    --imm-sch-url-padding: 0 0 25px 0.5vw;
     --max-logo-height: 80px; } }
 
 /* For an even narrower "portrait" layout */
-/* (Aspect ratios between 11/21 and 5/7) */
+/* (Aspect ratios between 6/7 and 5/7) */
 @media (max-aspect-ratio: 6 / 7) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
@@ -413,13 +413,14 @@ a:visited {
     --main-link-size: 12px;
     /* .matrix properties */
     /* .imm-sch-url-container properties */
+    --imm-sch-url-container-columns: 175px auto;
     --imm-sch-cont-height: 5vh;
     --imm-sch-cont-padding-top: 1.25vh;
-    --imm-sch-cont-padding: 0 0 0 0;
+    --imm-sch-url-margin: 35px 0 0 0;
+    --imm-sch-cont-padding: 0 50px 0 50px;
     --imm-sch-url-vertical-align-percentage: 55%;
     --imm-sch-url-padding: 0px;
     --imm-sch-url-size: 12px;
-    --logo-padding: 0 0 0 50px;
     --max-logo-height: 50px; }
   .main-desc {
     display: block; }
@@ -427,8 +428,8 @@ a:visited {
     grid-template-rows: 35% 15% auto; } }
 
 /* The narrowest "portrait" layouts */
-/* (Aspect ratios below 11/21) */
-@media (max-aspect-ratio: 11 / 21) and (min-height: 2100px) {
+/* (Aspect ratios below 5/7) */
+@media (max-aspect-ratio: 5 / 7) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
     --main-container-grid-areas:
@@ -464,15 +465,47 @@ a:visited {
 /**********************************************************************/
 /******************** For height-based font-size changes ********************/
 /**********************************************************************/
-/* Make the font a bit smaller if vh is 2100-2200px */
-/*
-@media (max-height: 2200px) {
+/* Make the font a bit bigger if vh is over 2300 */
+@media (min-height: 2300px) {
   :root {
     /* .main-txt properties */
-/*--main-desc-size: 54px;
-  }
-}
-*/
+    --main-desc-size: 66px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 27 / 7) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 60px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 2 / 1) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 54px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 8 / 5) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 48px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 10 / 7) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 42px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 1 / 1) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 38px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 6 / 7) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 32px; } }
+
+@media (min-height: 2300px) and (max-aspect-ratio: 5 / 7) {
+  :root {
+    /* .main-txt properties */
+    --main-desc-size: 30px; } }
+
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -485,13 +518,32 @@ a:visited {
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-/* Personal displays wider than 2560px */
+/*
+  .matrix-item {
+      transition: .5s;
+      transform: scale(1.0);
+      z-index: 100;
+  }
+
+  .matrix-item:hover {
+    // TODO add gif as hover state (or zoom-in as hover state)
+    // on hover, play gif of zooming on
+    // then reverse gif of zooming out when no longer hovering
+
+    //opacity: .5;
+    cursor: pointer;
+    transition: .5s;
+    transform: scale(1.125);
+    z-index: 0;
+  }
+}
+*/
 /**********************************************************************/
 /**********************************************************************/
-/******************** For 4K display (large desktop?) ********************/
+/******************** For 4K display (large desktop) ********************/
 /**********************************************************************/
 /**********************************************************************/
-@media (max-width: 2560px) and (max-height: 2099px) {
+@media (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
     --body-overflow: auto;
@@ -500,20 +552,23 @@ a:visited {
     --top-row-height: 80vh;
     --bottom-row-height: 20vh;
     /* .main-txt properties */
-    --main-txt-heading-margin: 25px 0;
-    --main-txt-padding: 40px;
+    --main-txt-heading-margin: 0 0 20px 0;
+    --main-txt-padding: 40px 40px 0px 40px;
     --main-txt-bg-color: rgb(54, 69, 79, 0);
     --main-title-size: 60px;
     --main-researcher-name-size: 30px;
     --main-desc-size: 16px;
     --main-link-size: 12px;
+    --quote-padding: 15px 0 15px 0;
     /* .matrix properties */
     --matrix-overflow: auto;
     --matrix-col-spacing: 1fr 1fr 1fr 1fr;
     --matrix-row-spacing: 1fr 1fr;
     /* .imm-sch-url-container properties */
+    --imm-sch-url-container-display: block;
     --imm-sch-url-vertical-align-percentage: 52.5%;
-    --imm-sch-cont-padding: 0px 40px 0 40px;
+    --imm-sch-cont-padding: 40px;
+    --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
     --imm-sch-url-margin: 0 0 0 0;
     --imm-sch-url-column-width: 0%;
     --logo-column-width: 100%;
@@ -522,18 +577,45 @@ a:visited {
       "imm-sch-url";
     --imm-sch-url-padding: 0vw;
     --imm-sch-url-size: 10px;
-    --max-logo-height: 40px; } }
+    --imm-sch-url-display: block;
+    --logo-display: block;
+    --max-logo-height: 40px; }
+  .imm-sch-url-container {
+    -ms-flex-item-align: end;
+        align-self: end;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(15%, black));
+    background-image: linear-gradient(rgba(0, 0, 0, 0), black 15%); }
+  .main-txt {
+    overflow: auto; }
+  .main-url {
+    margin-bottom: 0; } }
 
 /**********************************************************************/
 /**********************************************************************/
 /******************** For large laptop ********************/
 /**********************************************************************/
 /**********************************************************************/
+@media (max-width: 1650px) and (max-height: 2099px) {
+  :root {
+    --left-col-width: 70vw;
+    --right-col-width: 30vw;
+    --main-title-size: 54px;
+    --main-researcher-name-size: 30px; } }
+
 @media (max-width: 1440px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
-    --left-col-width: 70vw;
-    --right-col-width: 30vw;
+    --left-col-width: 65vw;
+    --right-col-width: 35vw;
+    /* .main-txt properties */
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+@media (max-width: 1200px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 60vw;
+    --right-col-width: 40vw;
     /* .main-txt properties */
     /* .matrix properties */
     /* .imm-sch-url-container properties */ } }
@@ -546,8 +628,8 @@ a:visited {
 @media (max-width: 1024px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
-    --left-col-width: 60vw;
-    --right-col-width: 40vw;
+    --left-col-width: 50vw;
+    --right-col-width: 50vw;
     /* .main-txt properties */
     --main-txt-heading-margin: 0 0 25px 0;
     /* .matrix properties */
@@ -579,8 +661,10 @@ a:visited {
     /* .imm-sch-url-container properties */
     --imm-sch-url-size: 12px;
     --imm-sch-cont-padding: 5vw; }
+  .main-container {
+    width: 100%; }
   .matrix {
-    width: 100vw;
+    width: 100%;
     overflow: auto;
     padding: 0 5vw;
     -webkit-box-sizing: border-box;
@@ -660,9 +744,11 @@ a:visited {
     --imm-sch-url-margin: 0 0 0 0;
     --imm-sch-url-column-width: 0%;
     --logo-column-width: 100%;
-    --imm-sch-url-container-areas:
-      "logo"
-      "imm-sch-url"; } }
+    --logo-display: block; }
+  .imm-sch-url-container {
+    display: block; }
+  .imm-sch-url {
+    vertical-align: 0; } }
 
 /* Aligns to 9x10 Commons Wall grid */
 @media (width: 2880px) and (height: 2400px) {
@@ -695,6 +781,8 @@ a:visited {
     /* body and .main-container properties */
     --left-col-width: 75vw;
     --right-col-width: 25vw;
+    /* .main-txt properties */
+    --main-desc-size: 60px;
     /* .imm-sch-url-container properties */
     --imm-sch-url-column-width: 75%;
     --logo-column-width: 25%; } }
@@ -718,6 +806,7 @@ a:visited {
     --main-link-size: 12px;
     /* .imm-sch-url-container properties */
     --imm-sch-url-container-display: block;
+    --logo-display: block;
     --imm-sch-cont-padding: 0px 25px 0 25px;
     --imm-sch-url-size: 12px;
     --imm-sch-url-padding: 0 0 0 0;
@@ -735,7 +824,9 @@ a:visited {
     width: 405px;
     position: fixed;
     left: 610px;
-    bottom: 455px;
+    bottom: 350px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    background-color: black; } }
+    background-color: black; }
+  .imm-sch-url {
+    vertical-align: 0; } }
