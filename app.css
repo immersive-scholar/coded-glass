@@ -13,16 +13,18 @@
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /**********************************************************************/
 /**********************************************************************/
-/******************* Wider landscape (100/21 - 18/7) *******************/
+/******************* Wider landscape (100/21 - 17/7) *******************/
 /**********************************************************************/
 /**********************************************************************/
-/* Aspect ratios between 100/21 and 30/7 */
+/* Aspect ratios between 100/21 and 17/7 */
 :root {
   /* body and .main-container properties */
   --body-overflow: hidden;
   --background-color: #000000;
   --text-color: #FFFFFF;
   --link-color: #CC0000;
+  --link-color-hover: #CCCCCC;
+  --hover-transition: 0.3s ease-in-out;
   --outermost-padding: 100px;
   --main-container-display: grid;
   --main-container-grid-areas:
@@ -34,8 +36,8 @@
   --paragraph-line-height: 1.3;
   --center-position: center;
   --horizontal-center-margins: 0;
-  --left-col-width: 80vw;
-  --right-col-width: 20vw;
+  --left-col-width: calc(100vw - 1750px);
+  --right-col-width: 1750px;
   --top-row-height: 85.714vh;
   --middle-row-height: 0vh;
   --bottom-row-height: 14.286vh;
@@ -43,7 +45,7 @@
   /* .main-txt properties */
   --main-txt-display: block;
   --main-txt-grid-areas: "";
-  --main-txt-heading-margin: 75px 0;
+  --main-txt-heading-margin: 50px 0;
   --main-txt-bg-color: rgb(0, 0, 0, 0);
   --max-main-line-length: 1090px;
   --main-title-size: 168px;
@@ -68,7 +70,6 @@
   /* .imm-sch-url-container properties */
   --imm-sch-url-container-display: grid;
   --imm-sch-url-container-columns: 355px auto;
-  --imm-sch-cont-height: initial;
   --imm-sch-cont-padding: 0px 75px 0 75px;
   --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
   --imm-sch-url-vertical-align: center;
@@ -125,7 +126,15 @@ a {
 
 /* Keeps visited links the same color as unvisted links */
 a:visited {
-  color: var(--link-color); }
+  color: var(--link-color);
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Makes links being hovered on a different color */
+a:hover {
+  color: var(--link-color-hover);
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
 
 /**********************************************************************/
 /******************** Main text area ********************/
@@ -191,7 +200,12 @@ a:visited {
       -ms-flex-align: var(--center-position);
           align-items: var(--center-position);
   grid-area: matrix;
-  overflow: var(--matrix-overflow); }
+  overflow: var(--matrix-overflow);
+  background-clip: content-box; }
+
+/* Hover state for matrix */
+.matrix:hover {
+  background-color: #EE8FD8; }
 
 /* Individual cell in the matrix */
 .matrix-item {
@@ -199,7 +213,27 @@ a:visited {
   height: var(--matrix-item-height);
   justify-self: var(--center-position);
   -o-object-fit: cover;
-     object-fit: cover; }
+     object-fit: cover;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition);
+  display: block; }
+
+/* Text that appears while hovering on the matrix item */
+/*
+.matrix-item-name {
+  z-index: 10;
+  text-align: center;
+  position: absolute;
+  font-size: 18px;
+  color: black;
+}
+*/
+/* Hover state for individual items in matrix */
+.matrix-item:hover {
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition);
+  cursor: pointer;
+  opacity: .5; }
 
 /**********************************************************************/
 /******************** Immersive Scholar URL ********************/
@@ -213,7 +247,6 @@ a:visited {
   z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  height: var(--imm-sch-cont-height);
   display: var(--imm-sch-url-container-display);
   grid-template-areas: var(--imm-sch-url-container-areas);
   grid-template-columns: var(--imm-sch-url-container-columns);
@@ -235,52 +268,20 @@ a:visited {
   grid-area: imm-sch-url;
   padding: var(--imm-sch-url-padding); }
 
-/* TODO write calc() to change column sizes */
-/* Aspect ratios 30/7 to 27/7 */
-@media (max-aspect-ratio: 30 / 7) and (min-height: 2100px) {
-  :root {
-    /* body and .main-container properties */
-    --left-col-width: 77.5vw;
-    --right-col-width: 22.5vw; } }
-
-/* Aspect ratios 27/7 to 64/21 */
-@media (max-aspect-ratio: 27 / 7) and (min-height: 2100px) {
-  :root {
-    /* body and .main-container properties */
-    --left-col-width: 75vw;
-    --right-col-width: 25vw;
-    /* .main-txt properties */
-    --main-desc-size: 54px; } }
-
-/* Aspect ratios 64/21 to 18/7 */
-@media (max-aspect-ratio: 64 / 21) and (min-height: 2100px) {
-  :root {
-    /* body and .main-container properties */
-    --left-col-width: 70vw;
-    --right-col-width: 30vw; } }
-
 /**********************************************************************/
 /**********************************************************************/
-/******************** Landscape (18/7 - 8/5) ********************/
+/******************** Landscape (17/7 - 8/5) ********************/
 /**********************************************************************/
 /**********************************************************************/
-/* Aspect ratios 18/7 to 2/1 */
-@media (max-aspect-ratio: 18 / 7) and (min-height: 2100px) {
+/* Aspect ratios 17/7 to 8/5 */
+@media (max-aspect-ratio: 17 / 7) {
   :root {
-    /* body and .main-container properties */
-    --left-col-width: 65vw;
-    --right-col-width: 35vw;
-    --imm-sch-url-column-width: 70%;
-    --logo-column-width: 30%; } }
-
-/* Aspect ratios 2/1 to 8/5 */
-@media (max-aspect-ratio: 2 / 1) and (min-height: 2100px) {
-  :root {
-    /* body and .main-container properties */
-    --left-col-width: 60vw;
-    --right-col-width: 40vw;
-    /* .main-txt properties */
-    --main-desc-size: 50px; } }
+    --left-col-width: calc(100vw - 1200px);
+    --right-col-width: 1200px;
+    --main-title-size: 144px;
+    --main-researcher-name-size: 96px;
+    --main-desc-size: 48px;
+    --main-link-size: 40px; } }
 
 /**********************************************************************/
 /**********************************************************************/
@@ -297,8 +298,8 @@ a:visited {
       "link link";
     --left-col-width: 100vw;
     --right-col-width: 0vw;
-    --top-row-height: 60vh;
-    --middle-row-height: 30vh;
+    --top-row-height: calc(90vh - 630px);
+    --middle-row-height: 630px;
     --bottom-row-height: 10vh;
     --main-cont-row-heights: var(--top-row-height) var(--middle-row-height) var(--bottom-row-height);
     /* .main-txt properties */
@@ -321,18 +322,15 @@ a:visited {
     --matrix-item-side-length: 85%;
     /* .imm-sch-url-container properties */
     --imm-sch-url-container-display: grid;
-    --imm-sch-cont-height: 10vh;
     --imm-sch-cont-padding-top: 2.5vh;
     --imm-sch-url-vertical-align-percentage: 55%;
-    --imm-sch-url-size: 24px;
     --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
-    --imm-sch-url-padding: 0 0 75px 0;
+    --imm-sch-url-padding: 0 0 0 0;
     --imm-sch-url-display: inline;
     --logo-display: inline;
     --logo-padding: 0 0 0 0; }
   .main-txt {
     grid-template-columns: 25% 75%;
-    grid-template-rows: 30% 25% auto;
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
   .main-desc {
@@ -342,30 +340,22 @@ a:visited {
     padding: 0;
     margin: 36px 0 0 0; } }
 
-/* Aspect ratios between 10/7 to 1/1 */
+/* Aspect ratios 10/7 to 1/1 */
 @media (max-aspect-ratio: 10 / 7) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
-    --top-row-height: 55vh;
-    --middle-row-height: 35vh;
-    --bottom-row-height: 10vh;
     /* .main-txt properties */
-    --main-desc-size: 38px; }
-  .main-txt {
-    grid-template-rows: auto;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box; }
-  .main-desc {
-    -webkit-column-fill: auto;
-            column-fill: auto; } }
+    --main-title-size: 108px;
+    --main-researcher-name-size: 72px;
+    --main-desc-size: 36px;
+    --main-link-size: 24px; } }
 
 /**********************************************************************/
 /**********************************************************************/
 /******************** Portrait (1/1 to 10/21) ********************/
 /**********************************************************************/
 /**********************************************************************/
-/* For a wider "portrait" layout */
-/* (Aspect ratios 1/1 to 6/7) */
+/* Aspect ratios 1/1 to 6/7 */
 @media (max-aspect-ratio: 1 / 1) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
@@ -386,126 +376,90 @@ a:visited {
     --imm-sch-url-vertical-align: center;
     --imm-sch-url-vertical-align-percentage: 40%;
     --imm-sch-url-container-columns: 265px auto;
-    --imm-sch-url-margin: 50px 0 0 0;
-    --imm-sch-url-padding: 0 0 25px 0.5vw;
+    --imm-sch-url-margin: 47.5px 0 0 0;
     --max-logo-height: 80px; } }
 
-/* For an even narrower "portrait" layout */
-/* (Aspect ratios between 6/7 and 5/7) */
+/* Aspect ratios 6/7 to 5/7 */
 @media (max-aspect-ratio: 6 / 7) and (min-height: 2100px) {
   :root {
-    /* body and .main-container properties */
-    --horizontal-center-margins: 0 auto;
-    --main-container-grid-areas:
-      "matrix"
-      "main-txt"
-      "link";
-    /* .main-txt properties */
-    --main-txt-grid-areas:
-      "title desc"
-      "name desc"
-      "url desc";
-    --main-txt-padding: 50px;
-    --main-txt-heading-margin: 0px 0px 15px 0px;
-    --main-title-size: 84px;
-    --main-researcher-name-size: 48px;
-    --main-desc-size: 30px;
-    --main-link-size: 12px;
-    /* .matrix properties */
-    /* .imm-sch-url-container properties */
-    --imm-sch-url-container-columns: 175px auto;
-    --imm-sch-cont-height: 5vh;
-    --imm-sch-cont-padding-top: 1.25vh;
-    --imm-sch-url-margin: 35px 0 0 0;
-    --imm-sch-cont-padding: 0 50px 0 50px;
-    --imm-sch-url-vertical-align-percentage: 55%;
-    --imm-sch-url-padding: 0px;
-    --imm-sch-url-size: 12px;
-    --max-logo-height: 50px; }
+    --main-desc-size: 30px; }
   .main-desc {
-    display: block; }
-  .main-txt {
-    grid-template-rows: 35% 15% auto; } }
+    display: block; } }
 
-/* The narrowest "portrait" layouts */
-/* (Aspect ratios below 5/7) */
+/* Aspect ratios 5/7 to 1/2 */
 @media (max-aspect-ratio: 5 / 7) and (min-height: 2100px) {
   :root {
     /* body and .main-container properties */
     --main-container-grid-areas:
-      "matrix"
-      "main-txt"
-      "link";
+      "matrix matrix"
+      "main-txt main-txt"
+      "link link";
     --left-col-width: 100vw;
     --right-col-width: 0vw;
     --top-row-height: 55vh;
     --middle-row-height: 40vh;
     --bottom-row-height: 5vh;
     /* .main-txt properties */
-    --main-txt-display: block;
-    --main-txt-grid-areas: "";
-    --main-txt-heading-margin: 0px 0px 25px 0px;
+    --main-txt-display: grid;
+    --main-txt-grid-areas:
+      "title title"
+      "name name"
+      "desc desc"
+      ". url";
+    --main-txt-padding: 50px;
     --main-desc-padding-left: 0px;
     --quote-padding: 25px 0 25px 0;
+    --main-title-size: 96px;
+    --main-researcher-name-size: 60px;
+    --main-desc-size: 28px;
+    --main-link-size: 18px;
     /* .matrix properties */
     --matrix-col-spacing: 1fr 1fr;
     --matrix-row-spacing: 1fr 1fr 1fr 1fr;
     --matrix-item-height: calc(.25 * var(--top-row-height));
     --matrix-item-width: calc(.5 * var(--left-col-width));
     /* .imm-sch-url-container properties */
+    --imm-sch-url-container-columns: 175px auto;
     --imm-sch-cont-padding: 0px 50px 0 50px;
-    --imm-sch-url-padding: 0 75px 75px 0px;
+    --imm-sch-url-margin: 32.5px 0 0 0;
     --imm-sch-url-size: 12px;
     --imm-sch-url-display: block;
     --max-logo-height: 50px;
     --logo-padding: 0 0 0 0; }
+  .main-txt {
+    grid-template-columns: 50% 50%; }
   .main-url {
-    float: right; } }
+    padding-left: 2.5%; } }
+
+/* Aspect ratios 1/2 to 1/3 */
+@media (max-aspect-ratio: 1 / 2) and (min-height: 2100px) {
+  :root {
+    --main-title-size: 84px;
+    --main-researcher-name-size: 48px;
+    --main-desc-size: 24px; }
+  .main-txt {
+    display: block; }
+  .main-desc {
+    -webkit-column-count: 1;
+            column-count: 1; }
+  .main-url {
+    padding-left: 0%; } }
+
+/* Aspect ratios below 1/3 */
+@media (max-aspect-ratio: 1 / 3) and (min-height: 2100px) {
+  :root {
+    --top-row-height: 50vh;
+    --middle-row-height: 40vh;
+    --bottom-row-height: 10vh;
+    --main-title-size: 72px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 24px;
+    --imm-sch-url-container-display: block;
+    --imm-sch-url-margin: 0; } }
 
 /**********************************************************************/
-/******************** For height-based font-size changes ********************/
+/******************** For height-based changes ********************/
 /**********************************************************************/
-/* Make the font a bit bigger if vh is over 2300 */
-@media (min-height: 2300px) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 66px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 27 / 7) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 60px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 2 / 1) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 54px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 8 / 5) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 48px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 10 / 7) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 42px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 1 / 1) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 38px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 6 / 7) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 32px; } }
-
-@media (min-height: 2300px) and (max-aspect-ratio: 5 / 7) {
-  :root {
-    /* .main-txt properties */
-    --main-desc-size: 30px; } }
-
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -518,31 +472,12 @@ a:visited {
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-/*
-  .matrix-item {
-      transition: .5s;
-      transform: scale(1.0);
-      z-index: 100;
-  }
-
-  .matrix-item:hover {
-    // TODO add gif as hover state (or zoom-in as hover state)
-    // on hover, play gif of zooming on
-    // then reverse gif of zooming out when no longer hovering
-
-    //opacity: .5;
-    cursor: pointer;
-    transition: .5s;
-    transform: scale(1.125);
-    z-index: 0;
-  }
-}
-*/
 /**********************************************************************/
 /**********************************************************************/
 /******************** For 4K display (large desktop) ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths wider than 1650px */
 @media (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -588,20 +523,26 @@ a:visited {
   .main-txt {
     overflow: auto; }
   .main-url {
-    margin-bottom: 0; } }
+    margin-bottom: 0; }
+  .matrix {
+    overflow: hidden; } }
 
 /**********************************************************************/
 /**********************************************************************/
 /******************** For large laptop ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths 1650px-1440px */
 @media (max-width: 1650px) and (max-height: 2099px) {
   :root {
+    /* body and .main-container properties */
     --left-col-width: 70vw;
     --right-col-width: 30vw;
+    /* .main-txt properties */
     --main-title-size: 54px;
     --main-researcher-name-size: 30px; } }
 
+/* Widths 1440px-1200px */
 @media (max-width: 1440px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -611,6 +552,7 @@ a:visited {
     /* .matrix properties */
     /* .imm-sch-url-container properties */ } }
 
+/* Widths 1200px-1024px */
 @media (max-width: 1200px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -622,9 +564,10 @@ a:visited {
 
 /**********************************************************************/
 /**********************************************************************/
-/******************** For laptop ********************/
+/******************** For laptop and tablet (landscape) ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths 1024px-768px */
 @media (max-width: 1024px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -641,9 +584,10 @@ a:visited {
 
 /**********************************************************************/
 /**********************************************************************/
-/******************** For tablet ********************/
+/******************** For tablet (portrait) and very large mobile ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths 768px-425px */
 @media (max-width: 768px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -675,6 +619,7 @@ a:visited {
 /******************** For larger mobile device ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths 425px-375px */
 @media (max-width: 425px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -694,6 +639,7 @@ a:visited {
 /******************** For medium mobile device ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths 375px-320px */
 @media (max-width: 375px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -709,6 +655,7 @@ a:visited {
 /******************** For small mobile device ********************/
 /**********************************************************************/
 /**********************************************************************/
+/* Widths 320px and narrower */
 @media (max-width: 320px) and (max-height: 2099px) {
   :root {
     /* body and .main-container properties */
@@ -829,4 +776,18 @@ a:visited {
             box-sizing: border-box;
     background-color: black; }
   .imm-sch-url {
-    vertical-align: 0; } }
+    vertical-align: 0; }
+  .matrix-item {
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transform: none;
+            transform: none;
+    z-index: 0;
+    overflow: hidden; }
+  .matrix-item:hover {
+    cursor: default;
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transform: none;
+            transform: none;
+    z-index: 0; } }
