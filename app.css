@@ -235,10 +235,10 @@ a:hover {
 
 /* Hover state for individual items in matrix */
 .matrix-item:hover {
-  -webkit-transition: var(--hover-transition);
-  transition: var(--hover-transition);
   cursor: pointer;
-  background-color: #EE8FD8; }
+  background-color: #EE8FD8;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
 
 /* Image inside of matrix */
 .matrix-item-img {
@@ -267,11 +267,15 @@ a:hover {
   font-size: var(--matrix-item-name-size);
   color: white;
   max-width: var(--matrix-item-name-max-width);
-  visibility: hidden; }
+  visibility: hidden;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
 
 /* Changes to matrix item name when matrix cell is hovered on */
 .matrix-item:hover .matrix-item-name {
-  visibility: visible; }
+  visibility: visible;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
 
 /**********************************************************************/
 /******************** Immersive Scholar URL ********************/
