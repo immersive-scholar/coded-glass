@@ -62,6 +62,9 @@
   --matrix-item-gap: 0px;
   --matrix-item-height: 50vh;
   --matrix-item-width: calc(.25 * var(--left-col-width));
+  --matrix-item-name-size: calc(24 / 1024 * 100vw);
+  --matrix-item-name-max-width: calc(.25 * var(--left-col-width));
+  --matrix-item-name-padding: 1vw;
   --matrix-col-spacing: 1fr 1fr 1fr 1fr;
   --matrix-row-spacing: 1fr 1fr;
   --matrix-width: 75%;
@@ -90,7 +93,18 @@ body {
   background-color: var(--background-color);
   color: var(--text-color); }
 
-/*
+/**
+ * <iframe> Image Viewer window overlaid on top of <main>.
+ * Allows all the windows to be played without leaving the index page.
+ */
+#slideshow {
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  border: 0;
+  position: absolute; }
+
+/**
  * Class containing the matrix, main-txt, and main-url classes,
  * all organized in a grid layout
  */
@@ -204,36 +218,60 @@ a:hover {
   background-clip: content-box; }
 
 /* Hover state for matrix */
-.matrix:hover {
-  background-color: #EE8FD8; }
-
 /* Individual cell in the matrix */
 .matrix-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Hover state for individual items in matrix */
+.matrix-item:hover {
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition);
+  cursor: pointer;
+  background-color: #EE8FD8; }
+
+/* Image inside of matrix */
+.matrix-item-img {
   width: var(--matrix-item-width);
   height: var(--matrix-item-height);
   justify-self: var(--center-position);
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-transition: var(--hover-transition);
-  transition: var(--hover-transition);
-  display: block; }
+  transition: var(--hover-transition); }
 
-/* Text that appears while hovering on the matrix item */
-/*
+/* Changes to matrix item image when matrix cell is hovered on */
+.matrix-item:hover .matrix-item-img {
+  opacity: 0.25;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Text that appears on top of image while hovering on the matrix item */
 .matrix-item-name {
   z-index: 10;
-  text-align: center;
+  padding: var(--matrix-item-name-padding);
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: absolute;
-  font-size: 18px;
-  color: black;
-}
-*/
-/* Hover state for individual items in matrix */
-.matrix-item:hover {
-  -webkit-transition: var(--hover-transition);
-  transition: var(--hover-transition);
-  cursor: pointer;
-  opacity: .5; }
+  font-size: var(--matrix-item-name-size);
+  color: white;
+  max-width: var(--matrix-item-name-max-width);
+  visibility: hidden; }
+
+/* Changes to matrix item name when matrix cell is hovered on */
+.matrix-item:hover .matrix-item-name {
+  visibility: visible; }
 
 /**********************************************************************/
 /******************** Immersive Scholar URL ********************/
@@ -515,6 +553,8 @@ a:hover {
     --imm-sch-url-display: block;
     --logo-display: block;
     --max-logo-height: 40px; }
+  #slideshow {
+    visibility: hidden; }
   .imm-sch-url-container {
     -ms-flex-item-align: end;
         align-self: end;
@@ -578,6 +618,7 @@ a:hover {
     /* .matrix properties */
     --matrix-item-height: 25vh;
     --matrix-item-width: calc(.5 * var(--left-col-width));
+    --matrix-item-name-max-width: calc(.5 * var(--left-col-width));
     --matrix-col-spacing: 1fr 1fr;
     --matrix-row-spacing: 1fr 1fr 1fr 1fr;
     /* .imm-sch-url-container properties */ } }
@@ -602,6 +643,9 @@ a:hover {
     /* .matrix properties */
     --matrix-item-width: 100%;
     --matrix-item-height: auto;
+    --matrix-item-name-size: calc(36 / 768 * 100vw);
+    --matrix-item-name-padding: 2vw;
+    --matrix-item-name-max-width: calc(338.109 / 768 * 100vw);
     /* .imm-sch-url-container properties */
     --imm-sch-url-size: 12px;
     --imm-sch-cont-padding: 5vw; }
@@ -630,6 +674,9 @@ a:hover {
     --main-desc-size: 18px;
     --main-link-size: 12px;
     /* .matrix properties */
+    --matrix-item-name-size: calc(36 / 425 * 100vw);
+    --matrix-item-name-padding: 4vw;
+    --matrix-item-name-max-width: calc(367.5 / 425 * 100vw);
     --matrix-col-spacing: 1fr;
     --matrix-row-spacing: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     /* .imm-sch-url-container properties */ } }
@@ -759,10 +806,12 @@ a:hover {
     --imm-sch-url-padding: 0 0 0 0;
     --imm-sch-url-margin: 0 0 0 0;
     --max-logo-height: 40px; }
+  #slideshow {
+    visibility: visible; }
   .main-txt {
     width: 405px;
     position: fixed;
-    left: 610px;
+    left: 612.5px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     background-color: black;
@@ -770,7 +819,7 @@ a:hover {
   .imm-sch-url-container {
     width: 405px;
     position: fixed;
-    left: 610px;
+    left: 612.5px;
     bottom: 350px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
