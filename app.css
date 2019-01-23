@@ -733,8 +733,6 @@ a:hover {
     --imm-sch-url-display: block;
     --logo-display: block;
     --max-logo-height: 40px; }
-  #slideshow {
-    visibility: hidden; }
   .imm-sch-url-container {
     -ms-flex-item-align: end;
         align-self: end;
@@ -1024,27 +1022,27 @@ a:hover {
     display: -ms-flexbox;
     display: flex;
     position: fixed;
-    left: 612.5px;
+    left: 611px;
     height: 100vh;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
   #slide-title {
-    width: 405px;
+    width: 406px;
     position: fixed;
-    left: 612.5px; }
+    left: 611px; }
   .main-txt {
-    width: 405px;
+    width: 406px;
     position: fixed;
-    left: 612.5px;
+    left: 611px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     background-color: black;
     height: 100vh; }
   .imm-sch-url-container {
-    width: 405px;
+    width: 406px;
     position: fixed;
-    left: 612.5px;
+    left: 611px;
     bottom: 350px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
