@@ -46,6 +46,7 @@
   --middle-row-height: 0vh;
   --bottom-row-height: 14.286vh;
   --main-cont-row-heights: var(--top-row-height) var(--bottom-row-height);
+  --main-container-fade: mainFade var(--slideshow-duration) infinite ease-in-out;
   /* Image Viewer iframe properties */
   --slide-desc-overlay-width: 100vw;
   --slide-desc-overlay-padding: 75px;
@@ -302,7 +303,22 @@ a:hover {
   grid-template-rows: var(--main-cont-row-heights);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-animation: var(--main-container-fade);
+          animation: var(--main-container-fade); }
+
+/******************** Main container fade ********************/
+@-webkit-keyframes mainFade {
+  0%, 10%, 91%, 100% {
+    opacity: 1; }
+  11%, 90% {
+    opacity: 0; } }
+
+@keyframes mainFade {
+  0%, 10%, 91%, 100% {
+    opacity: 1; }
+  11%, 90% {
+    opacity: 0; } }
 
 /**********************************************************************/
 /******************** Main text area ********************/
@@ -713,6 +729,7 @@ a:hover {
     --right-col-width: 25vw;
     --top-row-height: 80vh;
     --bottom-row-height: 20vh;
+    --main-container-fade: initial;
     /* Image Viewer iframe properties */
     --slide-visibility: hidden;
     --slide-img-fade: initial;
@@ -999,6 +1016,7 @@ a:hover {
     --logo-column-width: 25%; } }
 
 /* Aligns to 9x10 Visualization Wall grid (including columns) */
+/* (Each tile is 203px wide; non-video wall columns are 408px or 191px wide) */
 @media (width: 3840px) and (height: 1518px) {
   :root {
     /* body and .main-container properties */
@@ -1008,6 +1026,7 @@ a:hover {
     --left-col-width: 100vw;
     --right-col-width: 0vw;
     --main-container-display: block;
+    --main-container-fade: mainFade var(--slideshow-duration) infinite ease-in-out;
     /* Image Viewer iframe properties */
     --slide-desc-overlay-width: 405px;
     --slide-desc-overlay-padding: 25px;
