@@ -55,6 +55,7 @@
   --slide-duration: 60s;
   --slideshow-duration: 540s;
   --slide-img-fade: slideFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
+  --slide-desc-fade: descFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
   --slide-title-fade: titleFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
   --slide-bg-fade: bgFade var(--slideshow-duration) infinite ease-in-out;
   /* .main-txt properties */
@@ -165,8 +166,8 @@ a:hover {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   opacity: 0;
-  -webkit-animation: var(--slide-img-fade);
-          animation: var(--slide-img-fade);
+  -webkit-animation: var(--slide-desc-fade);
+          animation: var(--slide-desc-fade);
   visibility: var(--slide-visibility); }
 
 /* Window description text */
@@ -174,8 +175,8 @@ a:hover {
   margin: 0;
   font-size: var(--slide-desc-text-size);
   opacity: 0;
-  -webkit-animation: var(--slide-img-fade);
-          animation: var(--slide-img-fade); }
+  -webkit-animation: var(--slide-desc-fade);
+          animation: var(--slide-desc-fade); }
 
 /* Container containing slide-title */
 #slide-title-container {
@@ -240,7 +241,7 @@ a:hover {
   5% {
     opacity: 1; } }
 
-/******************** Img and desc fade ********************/
+/******************** Img fade ********************/
 @-webkit-keyframes slideFade {
   0%, 5%, 100% {
     opacity: 0; }
@@ -251,6 +252,19 @@ a:hover {
   0%, 5%, 100% {
     opacity: 0; }
   15%, 90% {
+    opacity: 1; } }
+
+/******************** Desc fade ********************/
+@-webkit-keyframes descFade {
+  0%, 5%, 65% {
+    opacity: 0; }
+  15%, 55% {
+    opacity: 1; } }
+
+@keyframes descFade {
+  0%, 5%, 65% {
+    opacity: 0; }
+  15%, 55% {
     opacity: 1; } }
 
 /******************** BG fade ********************/
@@ -702,6 +716,7 @@ a:hover {
     /* Image Viewer iframe properties */
     --slide-visibility: hidden;
     --slide-img-fade: initial;
+    --slide-desc-fade: initial;
     --slide-title-fade: initial;
     --slide-bg-fade: initial;
     /* .main-txt properties */
@@ -999,9 +1014,10 @@ a:hover {
     --slide-desc-text-size: 18px;
     --slide-title-size: 72px;
     --slide-visibility: visible;
-    --slide-img-fade: slideFade 60s infinite ease-in-out 60s;
-    --slide-title-fade: titleFade 60s infinite ease-in-out 60s;
-    --slide-bg-fade: bgFade 540s infinite ease-in-out;
+    --slide-img-fade: slideFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
+    --slide-desc-fade: descFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
+    --slide-title-fade: titleFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
+    --slide-bg-fade: bgFade var(--slideshow-duration) infinite ease-in-out;
     /* .main-txt properties */
     --main-txt-heading-margin: 0 0 25px 0;
     --main-txt-padding: 300px 25px 0 25px;
@@ -1016,33 +1032,36 @@ a:hover {
     --imm-sch-url-size: 12px;
     --imm-sch-url-padding: 0 0 0 0;
     --imm-sch-url-margin: 0 0 0 0;
-    --max-logo-height: 40px; }
+    --max-logo-height: 40px;
+    /* Visualization Wall-specific properties */
+    --vis-wall-text-col-width: 406px;
+    --vis-wall-text-left-offset: 611px; }
   #slide-desc-overlay {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     position: fixed;
-    left: 611px;
+    left: var(--vis-wall-text-left-offset);
     height: 100vh;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
   #slide-title {
-    width: 406px;
+    width: var(--vis-wall-text-col-width);
     position: fixed;
     left: 611px; }
   .main-txt {
-    width: 406px;
+    width: var(--vis-wall-text-col-width);
     position: fixed;
-    left: 611px;
+    left: var(--vis-wall-text-left-offset);
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     background-color: black;
     height: 100vh; }
   .imm-sch-url-container {
-    width: 406px;
+    width: var(--vis-wall-text-col-width);
     position: fixed;
-    left: 611px;
+    left: var(--vis-wall-text-left-offset);
     bottom: 350px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
