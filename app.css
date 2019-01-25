@@ -55,9 +55,9 @@
   --slide-visibility: visible;
   --slide-duration: 60s;
   --slideshow-duration: 540s;
-  --slide-img-fade: slideFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
-  --slide-desc-fade: descFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
-  --slide-title-fade: titleFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
+  --slide-img-fade: slideFade var(--slide-duration) infinite ease-in-out;
+  --slide-desc-fade: descFade var(--slide-duration) infinite ease-in-out;
+  --slide-title-fade: titleFade var(--slide-duration) infinite ease-in-out;
   --slide-bg-fade: bgFade var(--slideshow-duration) infinite ease-in-out;
   /* .main-txt properties */
   --main-txt-display: block;
@@ -146,7 +146,7 @@ a:hover {
  * <iframe> Image Viewer window overlaid on top of <main>.
  * Allows all the windows to be played without leaving the index page.
  */
-#slideshow {
+.slideshow {
   height: 100vh;
   width: 100vw;
   z-index: 95;
@@ -157,7 +157,7 @@ a:hover {
   visibility: var(--slide-visibility); }
 
 /* Container for window description overlay */
-#slide-desc-overlay {
+.slide-desc-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 97;
   width: var(--slide-desc-overlay-width);
@@ -172,7 +172,7 @@ a:hover {
   visibility: var(--slide-visibility); }
 
 /* Window description text */
-#slide-desc-text {
+.slide-desc-text {
   margin: 0;
   font-size: var(--slide-desc-text-size);
   opacity: 0;
@@ -180,7 +180,7 @@ a:hover {
           animation: var(--slide-desc-fade); }
 
 /* Container containing slide-title */
-#slide-title-container {
+.slide-title-container {
   background-color: black;
   width: 100vw;
   height: 100vh;
@@ -215,7 +215,7 @@ a:hover {
   text-decoration: underline; }
 
 /* Background behind slideshow while it's playing */
-#slideshow-bg {
+.slideshow-bg {
   background-color: black;
   width: 100vw;
   height: 100vh;
@@ -319,6 +319,11 @@ a:hover {
     opacity: 1; }
   11%, 90% {
     opacity: 0; } }
+
+/* Class to turn off animations on the index page */
+.no-anim {
+  -webkit-animation: initial;
+          animation: initial; }
 
 /**********************************************************************/
 /******************** Main text area ********************/
@@ -1033,9 +1038,9 @@ a:hover {
     --slide-desc-text-size: 18px;
     --slide-title-size: 72px;
     --slide-visibility: visible;
-    --slide-img-fade: slideFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
-    --slide-desc-fade: descFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
-    --slide-title-fade: titleFade var(--slide-duration) infinite ease-in-out var(--slide-duration);
+    --slide-img-fade: slideFade var(--slide-duration) infinite ease-in-out;
+    --slide-desc-fade: descFade var(--slide-duration) infinite ease-in-out;
+    --slide-title-fade: titleFade var(--slide-duration) infinite ease-in-out;
     --slide-bg-fade: bgFade var(--slideshow-duration) infinite ease-in-out;
     /* .main-txt properties */
     --main-txt-heading-margin: 0 0 25px 0;
@@ -1055,7 +1060,7 @@ a:hover {
     /* Visualization Wall-specific properties */
     --vis-wall-text-col-width: 406px;
     --vis-wall-text-left-offset: 611px; }
-  #slide-desc-overlay {
+  .slide-desc-overlay {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1068,7 +1073,7 @@ a:hover {
   #slide-title {
     width: var(--vis-wall-text-col-width);
     position: fixed;
-    left: 611px; }
+    left: var(--vis-wall-text-left-offset); }
   .main-txt {
     width: var(--vis-wall-text-col-width);
     position: fixed;
