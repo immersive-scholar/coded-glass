@@ -984,7 +984,7 @@ a:hover {
     vertical-align: 0; } }
 
 /* Aligns to 9x10 Commons Wall grid */
-@media (width: 2880px) and (height: 2440px) {
+@media (width: 2880px) and (height: 2400px) {
   :root {
     /* body and .main-container properties */
     --top-row-height: 60vh;
