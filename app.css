@@ -984,7 +984,7 @@ a:hover {
     vertical-align: 0; } }
 
 /* Aligns to 9x10 Commons Wall grid */
-@media (width: 2880px) and (height: 2400px) {
+@media (width: 2880px) and (height: 2440px) {
   :root {
     /* body and .main-container properties */
     --top-row-height: 60vh;
@@ -997,7 +997,7 @@ a:hover {
       "url desc";
     --main-title-size: 132px;
     --main-researcher-name-size: 96px;
-    --main-desc-size: 54px;
+    --main-desc-size: 56px;
     --main-link-size: 42px; }
   .main-txt {
     grid-template-columns: auto;
