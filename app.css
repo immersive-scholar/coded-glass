@@ -732,8 +732,8 @@ a:hover {
     --body-overflow: auto;
     --left-col-width: 75vw;
     --right-col-width: 25vw;
-    --top-row-height: 80vh;
-    --bottom-row-height: 20vh;
+    --top-row-height: 100vh;
+    --bottom-row-height: 0vh;
     --main-container-fade: initial;
     /* Image Viewer iframe properties */
     --slide-visibility: hidden;
@@ -743,7 +743,7 @@ a:hover {
     --slide-bg-fade: initial;
     /* .main-txt properties */
     --main-txt-heading-margin: 0 0 20px 0;
-    --main-txt-padding: 40px 40px 0px 40px;
+    --main-txt-padding: 40px 40px 40px 40px;
     --main-txt-bg-color: rgb(54, 69, 79, 0);
     --main-title-size: 60px;
     --main-researcher-name-size: 30px;
@@ -757,7 +757,7 @@ a:hover {
     /* .imm-sch-url-container properties */
     --imm-sch-url-container-display: block;
     --imm-sch-url-vertical-align-percentage: 52.5%;
-    --imm-sch-cont-padding: 40px;
+    --imm-sch-cont-padding: 40px 0px 0px 0px;
     --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
     --imm-sch-url-margin: 0 0 0 0;
     --imm-sch-url-column-width: 0%;
@@ -772,9 +772,7 @@ a:hover {
     --max-logo-height: 40px; }
   .imm-sch-url-container {
     -ms-flex-item-align: end;
-        align-self: end;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(15%, black));
-    background-image: linear-gradient(rgba(0, 0, 0, 0), black 15%); }
+        align-self: end; }
   .main-txt {
     overflow: auto; }
   .main-url {
