@@ -1,0 +1,1107 @@
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*|||||||||||||||||||| General large-scale displays ||||||||||||||||||||*/
+/*||||||||||| (min-height: 2100px, width: 10000px - 1000px) |||||||||||*/
+/*||||||||| (Meant for non-interactive, non-scrollable walls) |||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************* Wider landscape (100/21 - 17/7) *******************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Aspect ratios between 100/21 and 17/7 */
+:root {
+  /* body and .main-container properties */
+  --body-overflow: hidden;
+  --background-color: #000000;
+  --text-color: #FFFFFF;
+  --link-color: #CC0000;
+  --link-color-hover: #CCCCCC;
+  --hover-transition: 0.3s ease-in-out;
+  --outermost-padding: 100px;
+  --main-container-display: grid;
+  --main-container-grid-areas:
+    "matrix main-txt"
+    "matrix link";
+  --heading-font-family: 'Titillium Web', sans-serif;
+  --paragraph-font-family: 'Roboto', sans-serif;
+  --heading-line-height: 1.1;
+  --paragraph-line-height: 1.3;
+  --center-position: center;
+  --horizontal-center-margins: 0;
+  --left-col-width: calc(100vw - 1750px);
+  --right-col-width: 1750px;
+  --top-row-height: 85.714vh;
+  --middle-row-height: 0vh;
+  --bottom-row-height: 14.286vh;
+  --main-cont-row-heights: var(--top-row-height) var(--bottom-row-height);
+  /* .overlay-img-container properties */
+  --slide-desc-overlay-width: 100vw;
+  --slide-desc-overlay-padding: 75px;
+  --slide-desc-text-size: 108px;
+  --slide-title-size: 240px;
+  /* .main-txt properties */
+  --main-txt-display: block;
+  --main-txt-overflow: hidden;
+  --main-txt-grid-areas: "";
+  --main-txt-column-widths: auto auto auto;
+  --main-txt-heading-margin: 50px 0;
+  --main-txt-bg-color: rgb(0, 0, 0, 0);
+  --max-main-line-length: 1090px;
+  --main-title-size: 168px;
+  --main-researcher-name-size: 108px;
+  --main-desc-size: 58px;
+  --main-link-size: 48px;
+  --main-txt-padding: 0 75px 0 75px;
+  --main-desc-padding-left: 0px;
+  --main-desc-margin: initial;
+  --main-desc-column-count: 1;
+  --quote-display: block;
+  --quote-padding: 25px 0 25px 0;
+  --quote-margin: 0;
+  /* .matrix properties */
+  --matrix-item-max-side-length: 700px;
+  --matrix-item-height: 50vh;
+  --matrix-item-width: calc(.25 * var(--left-col-width));
+  --matrix-item-name-size: calc(24 / 1024 * 100vw);
+  --matrix-item-name-max-width: calc(.25 * var(--left-col-width));
+  --matrix-item-name-padding: 1vw;
+  --matrix-col-spacing: 1fr 1fr 1fr 1fr;
+  --matrix-row-spacing: 1fr 1fr;
+  --matrix-width: 75%;
+  --max-matrix-width: 6000px;
+  --matrix-overflow: hidden;
+  /* .imm-sch-url-container properties */
+  --imm-sch-url-container-display: grid;
+  --imm-sch-url-container-columns: 355px auto;
+  --imm-sch-cont-width: auto;
+  --imm-sch-cont-padding: 0px 75px 0 75px;
+  --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
+  --imm-sch-url-vertical-align: center;
+  --imm-sch-url-vertical-align-percentage: 62.5%;
+  --imm-sch-url-padding: 0 0 0 0;
+  --imm-sch-url-margin: 70px 0 0 0;
+  --imm-sch-url-size: 24px;
+  --imm-sch-url-container-areas: "logo imm-sch-url";
+  --imm-sch-url-column-width: 75%;
+  --logo-column-width: 25%;
+  --max-logo-height: 110px;
+  --logo-padding: 0 0 0 0;
+  --offsetX: 100px;
+  --offsetY: 100px;
+  --offsetZ: 450px; }
+
+/* Element containing .main-container */
+body {
+  margin: 0;
+  overflow: var(--body-overflow);
+  background-color: var(--background-color);
+  color: var(--text-color); }
+
+/* Main (collection) title, researcher name, and project titles */
+h1, h2, h3 {
+  font-family: var(--heading-font-family);
+  line-height: var(--heading-line-height); }
+
+/* All body text */
+p {
+  font-family: var(--paragraph-font-family);
+  line-height: var(--paragraph-line-height); }
+
+/* All links */
+a {
+  text-decoration: none;
+  color: var(--link-color); }
+
+/* Keeps visited links the same color as unvisted links */
+a:visited {
+  color: var(--link-color);
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Makes links being hovered on a different color */
+a:hover {
+  color: var(--link-color-hover);
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/**********************************************************************/
+/**********************************************************************/
+/***** Walt's implementation of image overlay for single page app *****/
+/**********************************************************************/
+/**********************************************************************/
+/* Contains the title, description, and image of the overlay */
+.overlay-img-container {
+  position: absolute;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  -webkit-transition-property: opacity, visibility;
+  transition-property: opacity, visibility;
+  -webkit-transition-duration: 1.5s;
+          transition-duration: 1.5s;
+  /* Container for window description overlay */
+  /* Container containing slide-title */
+  /* Image that was clicked on */
+  /* Zooms and pans across the image */ }
+  .overlay-img-container .slide-desc-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: var(--slide-desc-overlay-width);
+    position: absolute;
+    bottom: 0;
+    padding: var(--slide-desc-overlay-padding);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    z-index: 3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    /* Window description text */
+    /* codedglass.com URL that appears at end of window desc */ }
+    .overlay-img-container .slide-desc-overlay .slide-desc-text {
+      margin: 0;
+      font-size: var(--slide-desc-text-size); }
+    .overlay-img-container .slide-desc-overlay #slide-url {
+      color: white;
+      text-decoration: underline; }
+  .overlay-img-container .slide-title-container {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    position: absolute;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: var(--slide-desc-overlay-padding);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    /* Window title that fades in/out before window is displayed */ }
+    .overlay-img-container .slide-title-container #slide-title {
+      margin: 0;
+      font-size: var(--slide-title-size); }
+  .overlay-img-container .overlay-img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    position: absolute;
+    -webkit-transform: perspective(1200px) translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(var(--offsetZ));
+            transform: perspective(1200px) translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(var(--offsetZ)); }
+
+@-webkit-keyframes panzoom {
+  0% {
+    -webkit-transform: perspective(1200px) translate(0);
+            transform: perspective(1200px) translate(0);
+    opacity: 0; }
+  2% {
+    opacity: 0; }
+  15% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: perspective(1200px) translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(var(--offsetZ));
+            transform: perspective(1200px) translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(var(--offsetZ)); } }
+
+@keyframes panzoom {
+  0% {
+    -webkit-transform: perspective(1200px) translate(0);
+            transform: perspective(1200px) translate(0);
+    opacity: 0; }
+  2% {
+    opacity: 0; }
+  15% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: perspective(1200px) translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(var(--offsetZ));
+            transform: perspective(1200px) translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(var(--offsetZ)); } }
+  .overlay-img-container .pan-zoom {
+    -webkit-animation-name: panzoom;
+            animation-name: panzoom;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+    -webkit-animation-duration: var(--duration);
+            animation-duration: var(--duration); }
+
+/* Makes the element fade away */
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s; }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** Main container ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**
+ * Class containing the matrix, main-txt, and main-url classes,
+ * all organized in a grid layout
+ */
+.main-container {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 100vh;
+  width: 100vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: var(--main-container-display);
+  grid-template-areas: var(--main-container-grid-areas);
+  grid-template-columns: var(--left-col-width) var(--right-col-width);
+  grid-template-rows: var(--main-cont-row-heights);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap; }
+
+/**********************************************************************/
+/******************** Main text area ********************/
+/**********************************************************************/
+/**
+ * Container for main (collection) title, researcher name,
+ * description, and Immersive Scholar logo
+ */
+.main-txt {
+  padding: var(--main-txt-padding);
+  margin: var(--horizontal-center-margins);
+  overflow: var(--main-txt-overflow);
+  grid-area: main-txt;
+  background-color: var(--main-txt-bg-color);
+  z-index: 1;
+  display: var(--main-txt-display);
+  grid-template-areas: var(--main-txt-grid-areas);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: var(--main-txt-column-widths);
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+/* Title of the researcher's collection of work */
+.main-title {
+  font-size: var(--main-title-size);
+  margin: var(--main-txt-heading-margin);
+  font-weight: 700;
+  grid-area: title; }
+
+/* Name of the researcher */
+.researcher-name {
+  font-size: var(--main-researcher-name-size);
+  margin: var(--main-txt-heading-margin);
+  grid-area: name; }
+
+/* Paragraph describing the collection of work */
+.main-desc {
+  font-size: var(--main-desc-size);
+  grid-area: desc;
+  padding-left: var(--main-desc-padding-left);
+  margin: var(--main-desc-margin);
+  -webkit-column-count: var(--main-desc-column-count);
+          column-count: var(--main-desc-column-count);
+  -webkit-column-fill: auto;
+          column-fill: auto; }
+
+/* Styling for "about" paragraph */
+.about {
+  margin: 0; }
+
+/* Styling for quotes */
+.quote {
+  display: var(--quote-display);
+  padding: var(--quote-padding);
+  margin: var(--quote-margin);
+  font-style: italic; }
+
+/* Actual URL to the collection */
+.main-url {
+  font-size: var(--main-link-size);
+  grid-area: url; }
+
+/**********************************************************************/
+/******************** Matrix ********************/
+/**********************************************************************/
+/* Container for all the matrix items */
+.matrix {
+  width: var(--left-col-width);
+  height: 100%;
+  display: grid;
+  grid-template-columns: var(--matrix-col-spacing);
+  grid-gap: 0;
+  -webkit-box-align: var(--center-position);
+      -ms-flex-align: var(--center-position);
+          align-items: var(--center-position);
+  grid-area: matrix;
+  overflow: var(--matrix-overflow);
+  background-clip: content-box;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+/* Individual cell in the matrix */
+.matrix-item {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Hover state for individual items in matrix */
+.matrix-item:hover {
+  cursor: pointer;
+  background-color: #EE8FD8;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Image inside of matrix */
+.matrix-item-img {
+  width: var(--matrix-item-width);
+  height: var(--matrix-item-height);
+  max-height: 100%;
+  justify-self: var(--center-position);
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Changes to matrix item image when matrix cell is hovered on */
+.matrix-item:hover .matrix-item-img {
+  opacity: 0.25;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Text that appears on top of image while hovering on the matrix item */
+.matrix-item-name {
+  z-index: 10;
+  padding: var(--matrix-item-name-padding);
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  font-size: var(--matrix-item-name-size);
+  color: white;
+  max-width: var(--matrix-item-name-max-width);
+  visibility: hidden;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/* Changes to matrix item name when matrix cell is hovered on */
+.matrix-item:hover .matrix-item-name {
+  visibility: visible;
+  -webkit-transition: var(--hover-transition);
+  transition: var(--hover-transition); }
+
+/**********************************************************************/
+/******************** Immersive Scholar URL ********************/
+/**********************************************************************/
+/* Container for the URL to the Immersion Scholar project website */
+.imm-sch-url-container {
+  width: var(--imm-sch-cont-width);
+  grid-area: link;
+  -ms-flex-item-align: var(--imm-sch-url-vertical-align);
+      align-self: var(--imm-sch-url-vertical-align);
+  background-color: var(--imm-sch-url-bg-color);
+  z-index: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: var(--imm-sch-url-container-display);
+  grid-template-areas: var(--imm-sch-url-container-areas);
+  grid-template-columns: var(--imm-sch-url-container-columns);
+  padding: var(--imm-sch-cont-padding);
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3; }
+
+/* Immersive Scholar logo */
+#logo {
+  max-height: var(--max-logo-height);
+  display: var(--logo-display);
+  padding: var(--logo-padding);
+  grid-area: logo; }
+
+/* URL for the Immersive Scholar project that appears outside of .main-txt */
+.imm-sch-url {
+  margin: var(--imm-sch-url-margin);
+  font-size: var(--imm-sch-url-size);
+  display: var(--imm-sch-url-display);
+  vertical-align: var(--imm-sch-url-vertical-align-percentage);
+  grid-area: imm-sch-url;
+  padding: var(--imm-sch-url-padding); }
+
+/**********************************************************************/
+/**********************************************************************/
+/******************** Landscape (17/7 - 8/5) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/* Aspect ratios 17/7 to 8/5 */
+@media (max-aspect-ratio: 17 / 7) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: calc(100vw - 1200px);
+    --right-col-width: 1200px;
+    /* .main-txt properties */
+    --main-title-size: 144px;
+    --main-researcher-name-size: 96px;
+    --main-desc-size: 48px;
+    --main-link-size: 40px;
+    /* .overlay-img-container properties */
+    --slide-desc-text-size: 84px;
+    --slide-title-size: 216px; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** Narrower Landscape (8/5 - 1/1) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Aspect ratios 8/5 to 10/7 */
+@media (max-aspect-ratio: 8 / 5) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-display: flex;
+    --main-container-grid-areas:
+      "matrix matrix"
+      "main-txt main-txt"
+      "link link";
+    --left-col-width: 100vw;
+    --right-col-width: 0vw;
+    --top-row-height: calc(90vh - 630px);
+    --middle-row-height: 630px;
+    --bottom-row-height: 10vh;
+    --main-cont-row-heights: var(--top-row-height) var(--middle-row-height) var(--bottom-row-height);
+    /* .overlay-img-container properties */
+    --slide-desc-text-size: 60px;
+    --slide-title-size: 192px;
+    /* .main-txt properties */
+    --main-txt-display: grid;
+    --main-txt-grid-areas:
+      "title desc"
+      "name desc"
+      "url desc";
+    --main-txt-heading-margin: 0px 0px 25px 0px;
+    --main-title-size: 120px;
+    --main-researcher-name-size: 84px;
+    --main-desc-size: 42px;
+    --main-link-size: 30px;
+    --main-txt-padding: 75px;
+    --main-desc-padding-left: 75px;
+    --main-desc-margin: 0px;
+    --main-desc-column-count: 2;
+    --quote-padding: 0 0 0 0;
+    --quote-margin: 36px 0 0 0;
+    /* .matrix properties */
+    --matrix-width: 100%;
+    --matrix-item-width: 25vw;
+    --matrix-item-height: 100%;
+    /* .imm-sch-url-container properties */
+    --imm-sch-cont-width: 100%;
+    --imm-sch-url-container-display: grid;
+    --imm-sch-cont-padding: 0 75px 75px;
+    --imm-sch-url-vertical-align: flex-start;
+    --imm-sch-url-vertical-align-percentage: 55%;
+    --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
+    --imm-sch-url-padding: 0 0 0 0;
+    --imm-sch-url-display: inline;
+    --logo-display: inline;
+    --logo-padding: 0 0 0 0; }
+  .main-container {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .main-txt {
+    max-width: 3360px; }
+  .imm-sch-url-container {
+    max-width: 3360px;
+    -ms-flex-item-align: auto;
+        align-self: auto; } }
+
+/* Aspect ratios 10/7 to 1/1 */
+@media (max-aspect-ratio: 10 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    /* .overlay-img-container properties */
+    --slide-title-size: 168px;
+    /* .main-txt properties */
+    --main-title-size: 102px;
+    --main-researcher-name-size: 66px;
+    --main-desc-size: 36px;
+    --main-link-size: 24px; }
+  .main-txt {
+    max-width: 3152px; }
+  .imm-sch-url-container {
+    max-width: 3152px; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** Portrait (1/1 to 10/21) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Aspect ratios 1/1 to 6/7 */
+@media (max-aspect-ratio: 1 / 1) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --horizontal-center-margins: 0;
+    /* .overlay-img-container properties */
+    --slide-desc-text-size: 48px;
+    --slide-title-size: 144px;
+    /* .main-txt properties */
+    --main-title-size: 96px;
+    --main-researcher-name-size: 54px;
+    --main-desc-size: 32px;
+    --max-main-line-length: 800px;
+    /* .matrix properties */
+    --main-txt-padding: 75px;
+    --matrix-col-spacing: 1fr 1fr 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr;
+    --matrix-width: 100%;
+    --max-matrix-width: 100%;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-vertical-align: center;
+    --imm-sch-url-vertical-align-percentage: 40%;
+    --imm-sch-url-container-columns: 265px auto;
+    --imm-sch-url-margin: 47.5px 0 0 0;
+    --max-logo-height: 80px; }
+  .main-txt {
+    max-width: 2100px; }
+  .imm-sch-url-container {
+    max-width: 2100px; } }
+
+/* Aspect ratios 5/7 to 1/2 */
+@media (max-aspect-ratio: 6 / 7) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-grid-areas:
+      "matrix matrix"
+      "main-txt main-txt"
+      "link link";
+    --left-col-width: 100vw;
+    --right-col-width: 0vw;
+    --top-row-height: 55vh;
+    --middle-row-height: 40vh;
+    --bottom-row-height: 5vh;
+    /* .overlay-img-container properties */
+    --slide-desc-text-size: 36px;
+    --slide-title-size: 120px;
+    /* .main-txt properties */
+    --main-txt-display: block;
+    --main-txt-padding: 50px;
+    --main-desc-padding-left: 0px;
+    --main-desc-column-count: 1;
+    --main-title-size: 90px;
+    --main-researcher-name-size: 54px;
+    --main-desc-size: 28px;
+    --main-link-size: 18px;
+    /* .matrix properties */
+    --matrix-col-spacing: 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr 1fr 1fr;
+    --matrix-item-height: 100%;
+    --matrix-item-width: calc(.5 * var(--left-col-width));
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-container-columns: 175px auto;
+    --imm-sch-cont-padding: 0px 50px 50px;
+    --imm-sch-url-margin: 32.5px 0 0 0;
+    --imm-sch-url-size: 12px;
+    --imm-sch-url-display: block;
+    --max-logo-height: 50px;
+    --logo-padding: 0 0 0 0; }
+  .main-txt {
+    -webkit-column-count: 2;
+            column-count: 2;
+    -webkit-column-gap: 75px;
+            column-gap: 75px;
+    max-width: 1800px; }
+  .imm-sch-url-container {
+    max-width: 1800px; } }
+
+/* Aspect ratios 1/2 to 1/3 */
+@media (max-aspect-ratio: 1 / 2) and (min-height: 2100px) {
+  :root {
+    --main-title-size: 84px;
+    --main-researcher-name-size: 48px;
+    --main-desc-size: 24px;
+    --main-desc-padding-left: 0px;
+    --main-desc-column-count: 1; }
+  .main-txt {
+    -webkit-column-count: 1;
+            column-count: 1;
+    max-width: 760px; }
+  .imm-sch-url-container {
+    max-width: 760px; } }
+
+/* Aspect ratios below 1/3 */
+@media (max-aspect-ratio: 1 / 3) and (min-height: 2100px) {
+  :root {
+    /* body and .main-container properties */
+    --top-row-height: 50vh;
+    --middle-row-height: 40vh;
+    --bottom-row-height: 10vh;
+    /* .overlay-img-container properties */
+    --slide-title-size: 108px;
+    /* .main-txt properties */
+    --main-title-size: 72px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 24px;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-container-display: block;
+    --imm-sch-url-margin: 0; } }
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||| Personal devices (with scrolling capabilities) |||||||||||*/
+/*|||||||||||||||||||||||| (min-height: 2100px) ||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For 4K display (large desktop) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths wider than 1650px */
+@media (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --body-overflow: auto;
+    --left-col-width: 75vw;
+    --right-col-width: 25vw;
+    --top-row-height: 100vh;
+    --bottom-row-height: 0vh;
+    /* .overlay-img-container properties */
+    --slide-title-size: 72px;
+    --slide-desc-text-size: 16px;
+    --slide-desc-overlay-padding: 40px;
+    --slide-desc-overlay-width: var(--right-col-width);
+    /* .main-txt properties */
+    --main-txt-overflow: auto;
+    --main-txt-heading-margin: 0 0 20px 0;
+    --main-txt-padding: 40px 40px 40px 40px;
+    --main-txt-bg-color: rgb(54, 69, 79, 0);
+    --main-title-size: 60px;
+    --main-researcher-name-size: 30px;
+    --main-desc-size: 16px;
+    --main-link-size: 12px;
+    --quote-padding: 15px 0 15px 0;
+    /* .matrix properties */
+    --matrix-overflow: auto;
+    --matrix-col-spacing: 1fr 1fr 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-container-display: block;
+    --imm-sch-url-vertical-align: end;
+    --imm-sch-url-vertical-align-percentage: 52.5%;
+    --imm-sch-cont-padding: 40px 40px 40px 40px;
+    --imm-sch-url-bg-color: rgba(0, 0, 0, 0);
+    --imm-sch-url-margin: 0 0 0 0;
+    --imm-sch-url-column-width: 0%;
+    --logo-column-width: 100%;
+    --imm-sch-url-container-areas:
+      "logo"
+      "imm-sch-url";
+    --imm-sch-url-padding: 0vw;
+    --imm-sch-url-size: 10px;
+    --imm-sch-url-display: block;
+    --logo-display: block;
+    --max-logo-height: 40px; }
+  .slide-desc-overlay {
+    height: 100vh;
+    right: 0; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For large laptop ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths 1650px-1440px */
+@media (max-width: 1650px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 70vw;
+    --right-col-width: 30vw;
+    /* .main-txt properties */
+    --main-title-size: 54px;
+    --main-researcher-name-size: 30px; } }
+
+/* Widths 1440px-1200px */
+@media (max-width: 1440px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 65vw;
+    --right-col-width: 35vw;
+    /* .main-txt properties */
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/* Widths 1200px-1024px */
+@media (max-width: 1200px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 60vw;
+    --right-col-width: 40vw;
+    /* .main-txt properties */
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For laptop and tablet (landscape) ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths 1024px-768px */
+@media (max-width: 1024px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 50vw;
+    --right-col-width: 50vw;
+    /* .overlay-img-container properties */
+    --slide-desc-overlay-width: 100vw;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 25px 0;
+    /* .matrix properties */
+    --matrix-item-height: 25vh;
+    --matrix-item-width: calc(.5 * var(--left-col-width));
+    --matrix-item-name-max-width: calc(.5 * var(--left-col-width));
+    --matrix-col-spacing: 1fr 1fr;
+    --matrix-row-spacing: 1fr 1fr 1fr 1fr;
+    /* .imm-sch-url-container properties */ }
+  .slide-desc-overlay {
+    height: auto; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For tablet (portrait) and very large mobile ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths 768px-425px */
+@media (max-width: 768px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    --horizontal-center-margins: 0 auto;
+    --main-container-display: flex;
+    /* .overlay-img-container properties */
+    --slide-title-size: 48px;
+    --slide-desc-text-size: 24px;
+    --slide-desc-overlay-padding: 5vw;
+    /* .main-txt properties */
+    --main-txt-padding: 5vw;
+    --main-title-size: 60px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 24px;
+    --main-link-size: 18px;
+    /* .matrix properties */
+    --matrix-item-width: 100%;
+    --matrix-item-height: auto;
+    --matrix-item-name-size: calc(36 / 768 * 100vw);
+    --matrix-item-name-padding: 2vw;
+    --matrix-item-name-max-width: calc(338.109 / 768 * 100vw);
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-size: 12px;
+    --imm-sch-cont-padding: 5vw; }
+  .main-container {
+    width: 100%;
+    height: auto; }
+  .main-txt {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1; }
+  .matrix {
+    height: auto;
+    width: 100%;
+    padding: 0 5vw;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2; }
+  .matrix-item-img {
+    max-height: none; }
+  .imm-sch-url-container {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3; }
+  .overlay-img-container {
+    position: fixed; } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For larger mobile device ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths 425px-375px */
+@media (max-width: 425px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    /* .overlay-img-container properties */
+    --slide-desc-text-size: 18px;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 15px 0;
+    --main-desc-size: 18px;
+    --main-link-size: 12px;
+    /* .matrix properties */
+    --matrix-item-name-size: calc(36 / 425 * 100vw);
+    --matrix-item-name-padding: 4vw;
+    --matrix-item-name-max-width: calc(367.5 / 425 * 100vw);
+    --matrix-col-spacing: 1fr;
+    --matrix-row-spacing: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For medium mobile device ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths 375px-320px */
+@media (max-width: 375px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    /* .overlay-img-container properties */
+    --slide-title-size: 42px;
+    --slide-desc-text-size: 16px;
+    /* .main-txt properties */
+    --main-title-size: 54px;
+    --main-researcher-name-size: 36px;
+    --main-desc-size: 16px;
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/******************** For small mobile device ********************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+/* Widths 320px and narrower */
+@media (max-width: 320px) and (max-height: 2099px) {
+  :root {
+    /* body and .main-container properties */
+    /* .overlay-img-container properties */
+    --slide-title-size: 36px;
+    --slide-desc-text-size: 14px;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 10px 0;
+    --main-title-size: 48px;
+    --main-researcher-name-size: 30px;
+    --main-desc-size: 14px;
+    /* .matrix properties */
+    /* .imm-sch-url-container properties */ } }
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||  Specific to Hunt Library walls (w/ bevel grids) ||||||||||*/
+/*|||||||||||  (Visualization Wall also has special layout) |||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* Aligns to 15x8 Art Wall grid */
+@media (width: 5760px) and (height: 2304px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 80vw;
+    --right-col-width: 20vw;
+    /* .main-txt properties */
+    --main-desc-size: 48px;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-container-display: block;
+    --imm-sch-url-vertical-align-percentage: 0;
+    --imm-sch-url-margin: 0 0 0 0;
+    --imm-sch-url-column-width: 0%;
+    --logo-column-width: 100%;
+    --logo-display: block; } }
+
+/* Aligns to 9x10 Commons Wall grid */
+@media (width: 2880px) and (height: 2400px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-display: grid;
+    --top-row-height: 60vh;
+    --middle-row-height: 30vh;
+    --bottom-row-height: 10vh;
+    /* .main-txt properties */
+    --main-txt-grid-areas:
+      "title desc"
+      "name desc"
+      "url desc";
+    --main-txt-column-widths: 30%;
+    --main-desc-column-count: 1;
+    --main-title-size: 132px;
+    --main-researcher-name-size: 96px;
+    --main-desc-size: 54px;
+    --main-link-size: 42px;
+    --quote-display: none; }
+  .imm-sch-url-container {
+    -ms-flex-item-align: center;
+        align-self: center;
+    padding-bottom: 0; } }
+
+/* Aligns to 16x7 iPearl Immersion Theater grid */
+@media (width: 6816px) and (height: 2240px) {
+  :root {
+    /* body and .main-container properties */
+    --left-col-width: 75vw;
+    --right-col-width: 25vw;
+    /* .main-txt properties */
+    --main-desc-size: 60px;
+    /* .imm-sch-url-container properties */
+    --imm-sch-url-column-width: 75%;
+    --logo-column-width: 25%; } }
+
+/* Aligns to 9x10 Visualization Wall grid (including columns) */
+/* (Each tile is 203px wide; non-video wall columns are 408px or 191px wide) */
+@media (width: 3840px) and (height: 1518px) {
+  :root {
+    /* body and .main-container properties */
+    --main-container-grid-areas:
+      "main-txt"
+      "link";
+    --left-col-width: 100vw;
+    --right-col-width: 0vw;
+    --main-container-display: block;
+    /* .overlay-img-container properties */
+    --slide-desc-overlay-width: 405px;
+    --slide-desc-overlay-padding: 25px;
+    --slide-desc-text-size: 18px;
+    --slide-title-size: 72px;
+    /* .main-txt properties */
+    --main-txt-heading-margin: 0 0 25px 0;
+    --main-txt-padding: 300px 25px 0 25px;
+    --main-title-size: 60px;
+    --main-researcher-name-size: 48px;
+    --main-desc-size: 18px;
+    --main-link-size: 12px;
+    /* .imm-sch-url-container properties */
+    --imm-sch-cont-width: var(--vis-wall-text-col-width);
+    --imm-sch-url-container-display: block;
+    --logo-display: block;
+    --imm-sch-cont-padding: 0px 25px 0 25px;
+    --imm-sch-url-size: 12px;
+    --imm-sch-url-vertical-align-percentage: 0;
+    --imm-sch-url-padding: 0 0 0 0;
+    --imm-sch-url-margin: 0 0 0 0;
+    --max-logo-height: 40px;
+    /* Visualization Wall-specific properties */
+    --vis-wall-text-col-width: 406px;
+    --vis-wall-text-left-offset: 611px; }
+  .slide-desc-overlay {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    left: var(--vis-wall-text-left-offset);
+    height: 100vh;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  #slide-title {
+    width: var(--vis-wall-text-col-width);
+    position: fixed;
+    left: var(--vis-wall-text-left-offset); }
+  .main-txt {
+    width: var(--vis-wall-text-col-width);
+    position: fixed;
+    left: var(--vis-wall-text-left-offset);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: black;
+    height: 100vh; }
+  .imm-sch-url-container {
+    position: fixed;
+    left: var(--vis-wall-text-left-offset);
+    bottom: 350px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: black; }
+  .matrix-item {
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transform: none;
+            transform: none;
+    z-index: 0;
+    overflow: hidden; }
+  .matrix-item:hover {
+    cursor: default;
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transform: none;
+            transform: none;
+    z-index: 0; } }
