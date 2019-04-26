@@ -51,6 +51,8 @@
   --slide-desc-overlay-padding: 75px;
   --slide-desc-text-size: 108px;
   --slide-title-size: 240px;
+  --overlay-button-display: hidden;
+  --button-color-hover: #666666;
   /* .main-txt properties */
   --main-txt-display: block;
   --main-txt-overflow: hidden;
@@ -157,7 +159,11 @@ a:hover {
   /* Container for window description overlay */
   /* Container containing slide-title */
   /* Image that was clicked on */
-  /* Zooms and pans across the image */ }
+  /* Panning and zooming animation with fade transitions */
+  /* Zooms and pans across the image */
+  /* Buttons for interacting with the overlay */
+  /* Hover state for overlay buttons */
+  /* Button to close overlay in interactive display */ }
   .overlay-img-container .slide-desc-overlay {
     background-color: rgba(0, 0, 0, 0.5);
     width: var(--slide-desc-overlay-width);
@@ -245,13 +251,43 @@ a:hover {
             animation-timing-function: ease;
     -webkit-animation-duration: var(--duration);
             animation-duration: var(--duration); }
+  .overlay-img-container .overlay-button {
+    z-index: 10;
+    color: var(--text-color);
+    background-color: rgba(0, 0, 0, 0);
+    font-family: var(--paragraph-font-family);
+    font-size: calc(var(--slide-desc-text-size) * 2.5);
+    visibility: var(--overlay-button-display);
+    position: absolute;
+    -webkit-transition: .25s;
+    transition: .25s;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75); }
+  .overlay-img-container .overlay-button:hover {
+    cursor: pointer;
+    color: var(--button-color-hover);
+    -webkit-transition: .25s;
+    transition: .25s;
+    font-size: calc(var(--slide-desc-text-size) * 2.75); }
+  .overlay-img-container #close-button {
+    border-width: 0;
+    right: 45px;
+    top: 30px;
+    padding: 0px 15px;
+    margin: 0px -15px;
+    -webkit-transform: translateY(-55%) translateX(55%);
+            transform: translateY(-55%) translateX(55%); }
 
 /* Makes the element fade away */
 .hidden {
   visibility: hidden;
   opacity: 0;
   -webkit-transition-duration: 0.5s;
-          transition-duration: 0.5s; }
+          transition-duration: 0.5s;
+  /* Overwrite visibility when overlay-button has "hidden" class */ }
+  .hidden .overlay-button {
+    visibility: hidden; }
 
 /**********************************************************************/
 /**********************************************************************/
@@ -382,7 +418,8 @@ a:hover {
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-transition: var(--hover-transition);
-  transition: var(--hover-transition); }
+  transition: var(--hover-transition);
+  overflow: hidden; }
 
 /* Hover state for individual items in matrix */
 .matrix-item:hover {
@@ -406,11 +443,14 @@ a:hover {
 .matrix-item:hover .matrix-item-img {
   opacity: 0.25;
   -webkit-transition: var(--hover-transition);
-  transition: var(--hover-transition); }
+  transition: var(--hover-transition);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1); }
 
 /* Text that appears on top of image while hovering on the matrix item */
 .matrix-item-name {
-  z-index: 10;
+  opacity: 0;
+  z-index: 1;
   padding: var(--matrix-item-name-padding);
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -425,6 +465,7 @@ a:hover {
 
 /* Changes to matrix item name when matrix cell is hovered on */
 .matrix-item:hover .matrix-item-name {
+  opacity: 1;
   visibility: visible;
   -webkit-transition: var(--hover-transition);
   transition: var(--hover-transition); }
@@ -725,6 +766,7 @@ a:hover {
     --slide-desc-text-size: 16px;
     --slide-desc-overlay-padding: 40px;
     --slide-desc-overlay-width: var(--right-col-width);
+    --overlay-button-display: visible;
     /* .main-txt properties */
     --main-txt-overflow: auto;
     --main-txt-heading-margin: 0 0 20px 0;
@@ -845,7 +887,7 @@ a:hover {
     --main-container-display: flex;
     /* .overlay-img-container properties */
     --slide-title-size: 48px;
-    --slide-desc-text-size: 24px;
+    --slide-desc-text-size: 18px;
     --slide-desc-overlay-padding: 5vw;
     /* .main-txt properties */
     --main-txt-padding: 5vw;
@@ -901,7 +943,6 @@ a:hover {
   :root {
     /* body and .main-container properties */
     /* .overlay-img-container properties */
-    --slide-desc-text-size: 18px;
     /* .main-txt properties */
     --main-txt-heading-margin: 0 0 15px 0;
     --main-desc-size: 18px;
@@ -1042,6 +1083,7 @@ a:hover {
     --slide-desc-overlay-padding: 25px;
     --slide-desc-text-size: 18px;
     --slide-title-size: 72px;
+    --overlay-button-display: hidden;
     /* .main-txt properties */
     --main-txt-heading-margin: 0 0 25px 0;
     --main-txt-padding: 300px 25px 0 25px;
@@ -1085,6 +1127,7 @@ a:hover {
     background-color: black;
     height: 100vh; }
   .imm-sch-url-container {
+    padding: var(--imm-sch-cont-padding);
     position: fixed;
     left: var(--vis-wall-text-left-offset);
     bottom: 350px;
